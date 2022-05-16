@@ -56,14 +56,27 @@ INSERT INTO djelatnik (osoba)
 VALUES  (3),
         (4);
 
-INSERT INTO usluga (naziv_usluge, cijena)
-VALUES  ('šišanje kose', 50),
-        ('brijanje brade', 30),
-        ('bojanje kose', 100),
-        ('pranje kose', 20);
+INSERT INTO usluga (naziv_usluge, cijena, trajanje_minute)
+VALUES  ('šišanje kose', 50, 45),
+        ('brijanje brade', 30, 20),
+        ('bojanje kose', 100, 120),
+        ('pranje kose', 20, 10);
 
 INSERT INTO korisnik (osoba, usluga, student, djelatnik)
 VALUES  (1,1,1,1),
         (2,3,0,2);
 
-        
+UPDATE osoba
+SET ime = 'Ivan', prezime = 'Petrović'
+WHERE ime = 'Filip';
+
+UPDATE usluga
+SET cijena = 200
+WHERE naziv_usluge = 'bojanje kose';
+
+UPDATE korisnik
+SET usluga = 4, djelatnik = 2
+WHERE osoba = 1;
+
+DELETE FROM usluga
+WHERE naziv_usluge = 'brijanje brade';
