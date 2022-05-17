@@ -8,8 +8,7 @@ create table bicikl (
     sifra int not null primary key auto_increment,
     proizvodac varchar(50) not null,
     velicina int not null,
-    vrsta int not null,
-    cijena decimal(18,2)
+    vrsta int not null
 );
 
 create table velicina (
@@ -75,7 +74,8 @@ create table lokacija (
 create table bicikl_trgovina (
     sifra int not null primary key auto_increment,
     bicikl int not null,
-    trgovina int not null
+    trgovina int not null,
+    cijena decimal (18,2)
 );
 
 
