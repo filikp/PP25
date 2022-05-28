@@ -88,7 +88,7 @@ alter table cura add foreign key (punac) references punac(sifra);
 alter table sestra_svekar add foreign key (sestra) references sestra(sifra);
 alter table sestra_svekar add foreign key (svekar) references svekar(sifra);
 
--- # 1. U tablice muskarac, zena i sestra_svekar unesite po 3 retka
+# 1. U tablice muskarac, zena i sestra_svekar unesite po 3 retka
 
 -- insert into sestra (haljina, hlace, narukvica)
 -- values 	('Only', 'Only', 14), 
@@ -115,7 +115,7 @@ alter table sestra_svekar add foreign key (svekar) references svekar(sifra);
 -- 		(2,2), 
 -- 		(3,3);
 
--- # 2. U tablici cura postavite svim zapisima kolonu gustoca na vrijednost 15.77
+# 2. U tablici cura postavite svim zapisima kolonu gustoca na vrijednost 15.77
 
 -- insert into cura (novcica, gustoca, ogrlica)
 -- values 	(11.22, 14.55, 5),
@@ -126,3 +126,72 @@ alter table sestra_svekar add foreign key (svekar) references svekar(sifra);
 -- set gustoca = 15.77
 -- where gustoca > 0;
 
+# U tablici mladic obrišite sve zapise čija je vrijednost kolone kuna 
+# veće od 15,78.
+
+-- select * from mladic;
+
+-- insert into mladic (suknja, kuna, ekstroventno, dukserica)
+-- values 	('kratka', 18.6, true, 'dukserica'),
+-- 		('duga', 11.4, false, 'dukserica'),
+-- 		('suknja ko suknja', 15.79, true, 'duksa');
+
+-- delete from mladic where kuna > 15.78;
+
+# 4. Izlistajte kratkamajica iz tablice zena uz uvjet da vrijednost kolone 
+# hlace sadrže slova ana. (6)
+
+-- select * from zena;
+
+-- update zena 
+-- set hlace = 'jeans'
+-- where sifra = 2;
+
+-- select kratkamajica from zena 
+-- where hlace like '%ana%';
+
+# 5. Prikažite dukserica iz tablice svekar, asocijalno iz tablice mladic te 
+# hlace iz tablice muskarac uz uvjet da su vrijednosti kolone hlace iz 
+# tablice zena počinju slovom a te da su vrijednosti kolone haljina iz 
+# tablice sestra sadrže niz znakova ba. Podatke posložite po hlace iz 
+# tablice muskarac silazno.
+
+-- select * from muskarac;
+-- select * from zena;
+-- select * from mladic;
+-- select * from svekar;
+
+-- update muskarac 
+-- set hlace = 'tommy hilfiger'
+-- where sifra = 3;
+
+# Prikažite dukserica iz tablice svekar, asocijalno iz tablice mladic
+-- select f.dukserica 
+-- from svekar a right join sestra_svekar b
+-- on a.sifra = b.svekar 
+-- right join sestra c on c.sifra = b.sestra 
+-- right join zena d on c.sifra = d.sestra  
+-- right join muskarac e on d.sifra = e.zena
+-- right join mladic f on e.sifra = f.muskarac;
+
+# te hlace iz tablice muskarac uz uvjet da su vrijednosti kolone hlace iz 
+# tablice zena počinju slovom a te da su vrijednosti kolone haljina iz 
+# tablice sestra sadrže niz znakova ba.
+-- update sestra 
+-- set haljina = 'riba'
+-- where sifra = 1;
+
+-- select a.hlace
+-- from muskarac a left join zena b 
+-- on a.zena = b.sifra 
+-- left join sestra c on b.sestra = c.sifra 
+-- where b.hlace like 'a%'
+-- and c.haljina like '%ba%';
+
+# 6. Prikažite kolone haljina i maraka iz tablice sestra čiji se primarni 
+# ključ ne nalaze u tablici sestra_svekar.
+-- update sestra 
+-- set maraka = 22.2
+-- where sifra = 2;
+
+-- select haljina, maraka from sestra;
