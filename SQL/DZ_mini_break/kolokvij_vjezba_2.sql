@@ -122,3 +122,14 @@ values 	('1999-05-25', true, 1),
 update prijatelj 
 set treciputa = '2020-04-30'
 where sifra>0;
+
+# 3. . U tablici brat obrišite sve zapise čija je vrijednost kolone ogrlica 
+# različito od 14.
+
+insert into brat (ogrlica, asocijalno, neprijatelj)
+values	(123, true, 1),
+		(14, false, 3),
+		(532, true, 2);
+
+delete from brat
+where ogrlica != 14;
