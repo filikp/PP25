@@ -105,3 +105,20 @@ insert into decko_zarucnica (decko, zarucnica)
 values 	(1,2),
 		(2,3),
 		(3,1);
+
+# 2.  U tablici prijatelj postavite svim zapisima kolonu treciputa na 
+# vrijednost 30. travnja 2020.
+
+insert into svekar (ogrlica, asocijalno)
+values 	(10,true),
+		(23, false),
+		(44, true);
+	
+insert into prijatelj (treciputa, ekstroventno, svekar)
+values 	('1999-05-25', true, 1),
+		('2009-11-12', false, 2),
+		('2020-02-20', false, 3);
+	
+update prijatelj 
+set treciputa = '2020-04-30'
+where sifra>0;
