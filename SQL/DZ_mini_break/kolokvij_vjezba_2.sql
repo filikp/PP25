@@ -21,7 +21,7 @@ create table zarucnica (
     sifra int not null primary key auto_increment,
     narukvica int,
     bojakose varchar(37) not null,
-    novcica decimal(15,9),
+    novcanica decimal(15,9),
     lipa decimal(15,8) not null,
     indiferentno boolean not null
 );
@@ -133,3 +133,18 @@ values	(123, true, 1),
 
 delete from brat
 where ogrlica != 14;
+
+# 5.  Prikažite novcica iz tablice zarucnica, neprijatelj iz tablice brat te 
+# haljina iz tablice neprijatelj uz uvjet da su vrijednosti kolone 
+# drugiputa iz tablice cura poznate te da su vrijednosti kolone vesta iz 
+# tablice decko sadrže niz znakova ba. Podatke posložite po haljina iz 
+# tablice neprijatelj silazno. 
+
+select a.novcanica, f.neprijatelj, e.haljina
+from zarucnica a right join decko_zarucnica b
+on a.sifra = b.zarucnica
+right join decko c on b.decko = c.sifra 
+right join cura d on c.sifra = d.sifra 
+right join neprijatelj e on d.sifra = e.cura 
+right join brat f on e.sifra = f.neprijatelj
+where d.drugiputa != null and c.vesta like '%ba%';
