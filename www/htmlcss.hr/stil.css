@@ -1,0 +1,24 @@
+/*
+Selektor elementa
+*/
+body{
+    background-color: gray;
+    font-family: sans-serif;
+}
+
+/*
+Selektor klase
+*/
+.e1{
+    color: red;
+    background-color: aqua;
+}
+
+/*
+Selektor identifikacije
+*/
+
+#t1{
+    color: #ff00ff; /* ili #fof */
+}
+

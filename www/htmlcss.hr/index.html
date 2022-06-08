@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<!-- HTML učiti na https://developer.mozilla.org/en-US/docs/Web/HTML 
+    CSS učiti na https://developer.mozilla.org/en-US/docs/Web/CSS
+-->
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- 1. način definiranja CSS vanjska datoteka -->
+    <link rel="stylesheet" href="stil.css">
+    <!-- 2. način definiranja CSS style element-->
+    <style>
+        body{
+            background-color: aliceblue;
+        }
+        .e1{
+            color: green;
+        }
+    </style>
+    <title>Osnove HTML i CSS</title>
+</head>
+<body>
+
+    <h1>Povijest</h1>
+    <section>
+        <!-- 3. način definiranja CSS Style atribute -->
+        <h2 class="e1" style="background-color: beige;">Uvod</h2>
+        <article>
+            <h3>Motivacija</h3>
+            <ul>
+                <li class="e1">1. stavka</li>
+                <li id="t1">2. stavka</li>
+            </ul>
+        </article>
+    </section>
+
+    <p>
+        <a href="omeni.html">Moji podaci</a>
+    </p>
+
+</body>
+</html>
