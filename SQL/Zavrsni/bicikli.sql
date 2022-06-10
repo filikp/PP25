@@ -80,3 +80,10 @@ values 	(6, 1, 4),
 		(3, 1, 1),
 		(5, 10, 3),
 		(4, 1, 5);
+
+# Ispis imena i prezimena kupca, proizvođača bicikla, cijene, količine, ukupne cijene te vrijeme kupnje
+-- select d.ime, d.prezime, a.proizvodac as bicikl, a.cijena_kn, b.kolicina, (b.kolicina*a.cijena_kn) as ukupna_cijena, c.vrijeme_kupnje  
+-- from bicikl a inner join stavka b
+-- on a.sifra = b.bicikl
+-- inner join racun c on c.sifra = b.racun 
+-- inner join kupac d on c.kupac = d.sifra; 
