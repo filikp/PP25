@@ -1,0 +1,18 @@
+body{
+    background-color: lightcoral;
+    font-family: Arial;
+}
+
+.e1{
+    color: red;
+    background-color: greenyellow;
+}
+
+.e2{
+    color: green;
+    background-color: pink;
+}
+
+#t1{
+    color: blue;
+}
