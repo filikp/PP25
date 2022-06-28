@@ -18,23 +18,25 @@
     <div class="grid-x grid-margin-x" id="tijelo">
         <div class="cell">
             <div class="callout">
-                Zadatak 6 <br><br> Parni broj daje zelenu pozadinu, a neparni crvenu pozadinu.
-                <?php
-                    $a = isset($_GET['a']) ? $_GET['a'] : 0;
-                    if($a%2==0){
-                        echo '<body style="background-color: green">';
-                        echo '<br>Vaš broj je paran.<br>';
-                    }else{
-                        echo '<body style="background-color: red">';
-                        echo '<br>Vaš broj je neparan.<br>';
-                    }
-                ?>
+                Zadatak 6
+                <p>Parni broj daje <span style="color: green">zelenu</span> pozadinu, a neparni <span style="color: red">crvenu</span> pozadinu.</p> 
+                <?php $a = isset($_GET['a']) ? $_GET['a'] : 0; ?>
                 <form action="" method="get">
                     <label>
                         Unesi broj:
                         <input type="text" name="a" value="<?=$a?>">
                     </label>
                 </form>
+                <?php
+                    if($a%2==0){
+                        echo '<body style="background-color: green">';
+                        echo '<br>Broj ', $a, ' je paran.<br>';
+                    }else{
+                        echo '<body style="background-color: red">';
+                        echo '<br>Broj ', $a, ' je neparan.<br>';
+                    }
+                ?>
+                
             </div>
         </div>
     </div>
