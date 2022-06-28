@@ -30,13 +30,12 @@
                 <?php
                     if($a%2==0){
                         echo '<body style="background-color: green">';
-                        echo '<br>Broj ', $a, ' je paran.<br>';
+                        echo '<br>Broj ', $a, ' je <span style="color: green">paran</span>.<br>';
                     }else{
                         echo '<body style="background-color: red">';
-                        echo '<br>Broj ', $a, ' je neparan.<br>';
+                        echo '<br>Broj ', $a, ' je <span style="color: red">neparan</span>.<br>';
                     }
                 ?>
-                
             </div>
         </div>
     </div>
