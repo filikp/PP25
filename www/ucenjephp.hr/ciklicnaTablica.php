@@ -22,8 +22,8 @@
             <div class="callout">
                 Ciklička tablica
                 <?php
-                $x = isset($_GET['x']) ? $_GET['x'] : 1;
-                $y = isset($_GET['y']) ? $_GET['y'] : 1;
+                $x = isset($_GET['x']) ? $_GET['x'] : 0;
+                $y = isset($_GET['y']) ? $_GET['y'] : 0;
                 ?>
                 <form action="" method="get">
                     <label>
@@ -46,26 +46,22 @@
                 $brojac=0;
                 $lista=[[]];
 
-                for ($i = 0; $i<$x; $i++){
-                    for ($j = 0; $j<$y; $j++){
-                        $lista[$i][$j]=$vrijednost++;
+                for ($i = 1; $i<$x+1; $i++){
+                    for ($j = 1; $j<$y+1; $j++){
+                        $lista[$i][$j]=0;
                     }
                 }
-                echo '<hr />';
-
-                // ISPIS niza -----------------
-                for ($i = 0; $i<$x; $i++){
-                    for ($j = 0; $j<$y; $j++){
-                        echo $lista[$i][$j];
+                for ($i = $x; $i>0; $i--){
+                    for ($j = $y; $j>0; $j--){
+                        $lista[$i][$j] = $lista[$i][$j]+$vrijednost++;
                     }
                 }
-                //-----------------------------
-                echo '<hr />';
 
                 echo '<table border="1">';
-                for($i=0;$i<$x;$i++){
+
+                for($i=1;$i<$x+1;$i++){
                     echo '<tr>';
-                    for($j=0;$j<$y;$j++){
+                    for($j=1;$j<$y+1;$j++){
                         echo '<th>';
                         echo $lista[$i][$j];
                         echo '</th>';
