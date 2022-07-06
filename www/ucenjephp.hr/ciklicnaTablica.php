@@ -51,9 +51,58 @@
                         $lista[$i][$j]=0;
                     }
                 }
-                for ($i = $x; $i>0; $i--){
-                    for ($j = $y; $j>0; $j--){
+                
+                $i=$x;
+                $j=$y;
+                for($brojElem=0; $brojElem<$x*$y; $brojElem++){
+                    while($j>0){
+                        if($brojElem==$x*$y-1){
+                            break;
+                        }
                         $lista[$i][$j] = $lista[$i][$j]+$vrijednost++;
+                        $j--;
+                        $brojElem++;
+                    }
+                        
+                    $j++;
+                    $i--;
+                    while($i>0){
+                        if($brojElem==$x*$y){
+                            break;
+                        }
+                        $lista[$i][$j] = $lista[$i][$j]+$vrijednost++;
+                        $i--;
+                        $brojElem++;
+                    }
+                    $i++;
+                    $j++;
+                    while($j<4){
+                        if($brojElem==$x*$y){
+                            break;
+                        }
+                        $lista[$i][$j] = $lista[$i][$j]+$vrijednost++;
+                        $j++;
+                        $brojElem++;
+                    }
+                    $j--;
+                    $i++;
+                    while($i<3){
+                        if($brojElem==$x*$y){
+                            break;
+                        }
+                        $lista[$i][$j] = $lista[$i][$j]+$vrijednost++;
+                        $i++;
+                        $brojElem++;
+                    }
+                    $i--;
+                    $j--;
+                    while($j>1){
+                        if($brojElem==$x*$y){
+                            break;
+                        }
+                        $lista[$i][$j] = $lista[$i][$j]+$vrijednost++;
+                        $j--;
+                        $brojElem++;
                     }
                 }
 
