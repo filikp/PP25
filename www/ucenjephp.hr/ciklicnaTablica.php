@@ -51,11 +51,12 @@
                         $lista[$i][$j]=0;
                     }
                 }
-                
+
                 $i=$x;
                 $j=$y;
                 for($brojElem=0; $brojElem<$x*$y; $brojElem++){
-                    while($j>0){
+                    $brojElem--;
+                    while($j>0+$brojac){
                         if($brojElem==$x*$y-1){
                             break;
                         }
@@ -66,8 +67,8 @@
                         
                     $j++;
                     $i--;
-                    while($i>0){
-                        if($brojElem==$x*$y){
+                    while($i>0+$brojac){
+                        if($brojElem==$x*$y-1){
                             break;
                         }
                         $lista[$i][$j] = $lista[$i][$j]+$vrijednost++;
@@ -76,8 +77,8 @@
                     }
                     $i++;
                     $j++;
-                    while($j<4){
-                        if($brojElem==$x*$y){
+                    while($j<$y+1-$brojac){
+                        if($brojElem==$x*$y-1){
                             break;
                         }
                         $lista[$i][$j] = $lista[$i][$j]+$vrijednost++;
@@ -86,8 +87,9 @@
                     }
                     $j--;
                     $i++;
-                    while($i<3){
-                        if($brojElem==$x*$y){
+                    $brojac++;
+                    while($i<$x+1-$brojac){
+                        if($brojElem==$x*$y-1){
                             break;
                         }
                         $lista[$i][$j] = $lista[$i][$j]+$vrijednost++;
@@ -96,14 +98,6 @@
                     }
                     $i--;
                     $j--;
-                    while($j>1){
-                        if($brojElem==$x*$y){
-                            break;
-                        }
-                        $lista[$i][$j] = $lista[$i][$j]+$vrijednost++;
-                        $j--;
-                        $brojElem++;
-                    }
                 }
 
                 echo '<table border="1">';
