@@ -23,73 +23,55 @@ function izbrojSlova($prvoIme, $drugoIme)
     return $brojSlovaRedom;
 }
 $x = 'Miroslav';
-$y = 'Zorin';
+$y = 'Kupusa';
 izbrojSlova($x, $y);
 
 function ljubavniKalkulator($prvoIme, $drugoIme)
 {
     $sve = izbrojSlova($prvoIme, $drugoIme); // dobijem listu koliko ima kojeg slova redom s ponavljanjem
-    echo '<pre>';
-    print_r($sve);
-    echo '</pre>';
-    echo $prvoIme, '<br>', $drugoIme, '<br>';
     $konacno = '';
-    $min = strlen($prvoIme);
+    // Treba mi najkraća riječ
+    $min = strlen($prvoIme); 
     if(strlen($drugoIme)<strlen($prvoIme)){
         $min = strlen($drugoIme);
     }
-    $duljina = count($sve);
+    $duljina = count($sve); // Duljina obje riječi
     for($i=1;$i<=$min;$i++){
         $konacno = $konacno . ($sve[$i-1]+$sve[$duljina-$i]);
-        echo $konacno, '<br>';
         unset($sve[$i-1]);
         unset($sve[$duljina-$i]);
-        echo '<pre>';
-        print_r($sve);
-        echo '</pre>';
     }
-    $spojeno = implode('',$sve);
-    $konacno = $konacno . $spojeno;
-    echo $konacno;
-    
-
-    // $spojenoX = implode('',$prvoIme); // spaja niz u string bez razmaka
-    // $spojenoY = implode('',$drugoIme); // spaja niz u string bez razmaka
-    // $spojenoSve = $spojenoX . $spojenoY;
-    // $zbrajanjeDvaBroja = '';
-    // for($i=0;$i<$max;$i++){
-    //     $suma = 0;
-    //     $suma = $x[$i]+$y[$i];
-    //     $zbrajanjeDvaBroja = $zbrajanjeDvaBroja . $suma; 
-    // }
-    // echo zbrojiPrviIZadnji($spojenoSve);
-    
-    // echo $zbrajanjeDvaBroja;
-    // echo '<pre>';
-    // print_r($x);
-    // print_r($y);
-    // echo '</pre>';
-    // echo $spojenoSve, '<br>';
+    echo '<pre>';
+    print_r($sve);
+    echo '</pre>';
+    if($drugoIme>$prvoIme){
+        $spojeno = strrev(implode('',$sve)); // spaja niz u string i okreće ga
+    }else{
+        $spojeno = implode('',$sve); // spaja niz u string
+    }
+    $konacno = $konacno . $spojeno; // Dodaje ostatak brojeva koji se nemaju s čim zbrojiti
+    echo $konacno, '<br>';
+    echo zbrojiPrviIZadnji($konacno);
 }
 
-// function zbrojiPrviIZadnji($broj)
-// {
-//     if(strlen($broj)==2 || strlen($broj)==1){
-//         return $broj;
-//     }else{
-//         $zbrajanjeDvaBroja = '';
-//         for($i=1;$i<=((int)(strlen($broj)*0.5));$i++){
-//             $zbrajanjeDvaBroja = $zbrajanjeDvaBroja . ($broj[$i-1] + $broj[strlen($broj)-$i]);
-//         }
-//         //echo $zbrajanjeDvaBroja, '<br>';
-//         //echo strlen($broj), '<br>';
-//         if((strlen($broj))%2!=0){
-//             $zbrajanjeDvaBroja = $zbrajanjeDvaBroja . $broj[(int)(strlen($broj)*0.5)];
-//         }
-//         //echo $zbrajanjeDvaBroja, '<br>';
-//         return zbrojiPrviIZadnji($zbrajanjeDvaBroja);
-//     }
-// }
+function zbrojiPrviIZadnji($broj)
+{
+    if(strlen($broj)==2 || strlen($broj)==1){
+        return $broj;
+    }else{
+        $zbrajanjeDvaBroja = '';
+        for($i=1;$i<=((int)(strlen($broj)*0.5));$i++){
+            $zbrajanjeDvaBroja = $zbrajanjeDvaBroja . ($broj[$i-1] + $broj[strlen($broj)-$i]);
+        }
+        //echo $zbrajanjeDvaBroja, '<br>';
+        //echo strlen($broj), '<br>';
+        if((strlen($broj))%2!=0){
+            $zbrajanjeDvaBroja = $zbrajanjeDvaBroja . $broj[(int)(strlen($broj)*0.5)];
+        }
+        //echo $zbrajanjeDvaBroja, '<br>';
+        return zbrojiPrviIZadnji($zbrajanjeDvaBroja);
+    }
+}
 
 ljubavniKalkulator($x,$y);
 
