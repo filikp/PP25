@@ -2,6 +2,8 @@
 // Broji koliko se puta pojavljuje koje slovo
 function izbrojSlova($prvoIme, $drugoIme)
 {
+    $prvoIme = strtolower($prvoIme); // sva slova pratvara u mala slova
+    $drugoIme = strtolower($drugoIme); // sva slova pratvara u mala slova
     $zajednoImena = $prvoIme . $drugoIme;
     $brojSlovaRedom = []; //prazna lista u kojoj se redom sprema koliko ima kojeg slova (lista je dugačka koliko i riječ)
     //Lista KolikoI$kolikoImaKojegSlova kojoj su ključevi slova imena, a vrijednosti ključa koliko se puta ponavlja to slovo
@@ -9,21 +11,21 @@ function izbrojSlova($prvoIme, $drugoIme)
         $kolikoImaKojegSlova[chr($i)] = $vrijednost; 
     }
     //U brojSlova se sprema koliko ima kojeg slova, redom kako je i napisano ime
-    foreach (mb_str_split($zajednoImena) as $slova) {
+    foreach (mb_str_split($zajednoImena) as $slova){
         foreach($kolikoImaKojegSlova as $key => $value){
             if($slova === $key){
                 $brojSlovaRedom[] = $value;
             }
         }
     }
-    // echo '<pre>';
-    // print_r($kolikoImaKojegSlova);
-    // print_r($brojSlovaRedom);
-    // echo '</pre>';
+    echo '<pre>';
+    print_r($kolikoImaKojegSlova);
+    print_r($brojSlovaRedom);
+    echo '</pre>';
     return $brojSlovaRedom;
 }
-$x = 'Miroslav';
-$y = 'Kupusa';
+$x = 'Krastavac';
+$y = 'Burek';
 izbrojSlova($x, $y);
 
 function ljubavniKalkulator($prvoIme, $drugoIme)
@@ -63,12 +65,9 @@ function zbrojiPrviIZadnji($broj)
         for($i=1;$i<=((int)(strlen($broj)*0.5));$i++){
             $zbrajanjeDvaBroja = $zbrajanjeDvaBroja . ($broj[$i-1] + $broj[strlen($broj)-$i]);
         }
-        //echo $zbrajanjeDvaBroja, '<br>';
-        //echo strlen($broj), '<br>';
         if((strlen($broj))%2!=0){
             $zbrajanjeDvaBroja = $zbrajanjeDvaBroja . $broj[(int)(strlen($broj)*0.5)];
         }
-        //echo $zbrajanjeDvaBroja, '<br>';
         return zbrojiPrviIZadnji($zbrajanjeDvaBroja);
     }
 }
