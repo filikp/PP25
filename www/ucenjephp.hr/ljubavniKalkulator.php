@@ -24,9 +24,6 @@ function izbrojSlova($prvoIme, $drugoIme)
     echo '</pre>';
     return $brojSlovaRedom;
 }
-$x = 'Krastavac';
-$y = 'Burek';
-izbrojSlova($x, $y);
 
 function ljubavniKalkulator($prvoIme, $drugoIme)
 {
@@ -46,7 +43,7 @@ function ljubavniKalkulator($prvoIme, $drugoIme)
     echo '<pre>';
     print_r($sve);
     echo '</pre>';
-    if($drugoIme>$prvoIme){
+    if(strlen($drugoIme)>strlen($prvoIme)){
         $spojeno = strrev(implode('',$sve)); // spaja niz u string i okreće ga
     }else{
         $spojeno = implode('',$sve); // spaja niz u string
@@ -72,6 +69,8 @@ function zbrojiPrviIZadnji($broj)
     }
 }
 
+$x = 'Zorin';
+$y = 'Miroslav';
 ljubavniKalkulator($x,$y);
 
 
