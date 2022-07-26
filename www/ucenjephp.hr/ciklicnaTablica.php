@@ -44,8 +44,7 @@
                 <?php
                 $vrijednost=1;
                 $brojac=0;
-                $lista=[[]];
-
+                $lista=[];
                 for ($i = 1; $i<$x+1; $i++){
                     for ($j = 1; $j<$y+1; $j++){
                         $lista[$i][$j]=0;
@@ -56,6 +55,7 @@
                 $j=$y;
                 for($brojElem=0; $brojElem<$x*$y; $brojElem++){
                     $brojElem--;
+                    //Dole s desna na lijevo
                     while($j>0+$brojac){
                         if($brojElem==$x*$y-1){
                             break;
@@ -64,7 +64,7 @@
                         $j--;
                         $brojElem++;
                     }
-                        
+                    //Lijevo odozdo prema gore
                     $j++;
                     $i--;
                     while($i>0+$brojac){
@@ -75,6 +75,7 @@
                         $i--;
                         $brojElem++;
                     }
+                    //Gore s lijeva na desno
                     $i++;
                     $j++;
                     while($j<$y+1-$brojac){
@@ -85,6 +86,7 @@
                         $j++;
                         $brojElem++;
                     }
+                    //Desno odozgo prema dole
                     $j--;
                     $i++;
                     $brojac++;
@@ -96,16 +98,29 @@
                         $i++;
                         $brojElem++;
                     }
+                    //Vraća na prvi while Dole s desna na lijevo
                     $i--;
                     $j--;
                 }
-
-                echo '<table border="1">';
-
+                echo '<table border="2">';
                 for($i=1;$i<$x+1;$i++){
                     echo '<tr>';
-                    for($j=1;$j<$y+1;$j++){
-                        echo '<th>';
+                    for($j=1;$j<$y+1;$j++){ 
+                        $r = $lista[$i][$j]*3+50;
+                        if($r>255){
+                            $r-=255;
+                        }
+                        $g = $lista[$i][$j]*5+50;
+                        if($g>255){
+                            $g-=255;
+                        }
+                        $b = $lista[$i][$j]*3+50;
+                        if($b>255){
+                            $b-=255;
+                        }
+                        ?>
+                        <th style="background-color: rgb(<?=$r?>,<?=$g?>,<?=$b?>)">
+                        <?php
                         echo $lista[$i][$j];
                         echo '</th>';
                     }
