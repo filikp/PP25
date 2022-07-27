@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Buttons</title>
+</head>
+<style>
+  .twet-button {
+    background-color: rgb(19, 143, 252);
+    color: white;
+    border: none;
+    height: 34px;
+    width: 74px;
+    border-radius: 17px;
+    font-weight: bold;
+    font-size: 15px;
+    cursor: pointer;
+    transition: box-shadow 0.1s, height 0.1s, width 0.1s, font-size 0.1s;
+  }
+
+  .twet-button:hover{
+    box-shadow: 3px 3px 7px rgba(0, 0, 0, 0.3);
+  }
+
+  .twet-button:active{
+    height: 31px;
+    width: 70px;
+    box-shadow: 1px 1px 3px rgba(0, 0, 0, 0.5);
+    font-size: 14px;
+  }
+
+</style>
+<body>
+  <button class="twet-button">Tweet</button>
+</body>
+</html> 

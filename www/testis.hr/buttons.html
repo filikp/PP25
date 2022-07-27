@@ -4,102 +4,82 @@
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Document</title>
+  <title>Buttons</title>
 </head>
 <style>
-  .request-button{
-    background-color: black;
+  .subscribe-button {
+    background-color: rgb(210, 0, 0);
     color: white;
     border: none;
-    width: 110px;
     height: 36px;
-    font-size: 13px;
+    width: 105px;
+    border-radius: 2px;
+    cursor: pointer;
     margin-right: 8px;
-    cursor: pointer;
-    margin-bottom: 10px;
+    transition: opacity 0.15s;
   }
-  .amazon-button{
-    background-color: rgb(255, 216, 20);
-    border: none;
-    border-radius: 18px;
+
+  .subscribe-button:hover{
+    opacity: 0.8;
+  }
+
+  .subscribe-button:active{
+    opacity: 0.5;
+  }
+
+  .join-button {
+    background-color: white;
+    color: rgb(41, 118, 211);
+    border-color: rgb(41, 118, 211);
+    border-style: solid;
+    border-width: 1px;
     height: 36px;
-    width: 170px;
+    width: 62px;
+    border-radius: 2px;
     cursor: pointer;
+    margin-right: 8px;
+    transition: background-color 0.15s, 
+                color 0.15s;
   }
-  .github-button{
-    background-color: rgb(46, 164, 79);
+
+  .join-button:hover{
+    background-color: rgb(41, 118, 211);
+    color: white;
+    
+  }
+
+  .join-button:active{
+    opacity: 0.7;
+  }
+
+  .twet-button {
+    background-color: rgb(19, 143, 252);
+    color: white;
     border: none;
-    border-radius: 4px;
-    height: 32px;
-    width: 90px;
-    color: white;
-    font-weight: bold;
-    cursor: pointer;
-  }
-  .bootstrap-getstarted-button{
-    background-color: rgb(121, 82, 179);
-    color: white;
-    border: none;
-    border-radius: 3px;
-    margin-top: 10px;
-    height: 32px;
-    width: 90px;
-    font-size: 11px;
-    font-weight: bold;
-    cursor: pointer;
-  }
-  .bottstrap-download-button{
-    background-color: white;
-    color: rgb(108,117,125);
-    border-width: 1px;
-    border-radius: 3px;
-    width: 90px;
-    height: 32px;
-    font-weight: bold;
-    font-size: 11px;
-    margin-left: 8px;
-    cursor: pointer;
-  }
-  .linkedin-apply-button{
-    background-color: rgb(10, 102, 194);
-    color: white;
-    margin-top: 10px;
-    font-weight: bold;
     height: 34px;
-    width: 210px;
-    border: none;
+    width: 74px;
     border-radius: 17px;
-    cursor: pointer;
-  }
-  .linkedin-save-button{
-    background-color: white;
-    color: rgb(10, 102, 194);
     font-weight: bold;
-    height: 34px;
+    font-size: 15px;
+    cursor: pointer;
+    transition: box-shadow 0.15s, height 0.1s, width 0.1s, font-size 0.1s;
+  }
+
+  .twet-button:hover{
+    box-shadow: 3px 3px 7px rgba(0, 0, 0, 0.3);
+  }
+
+  .twet-button:active{
+    height: 31px;
     width: 70px;
-    border-width: 1px;
-    border-color: rgb(10, 102, 194);
-    border-radius: 17px;
-    margin-left: 8px;
-    cursor: pointer;
+    box-shadow: 1px 1px 4px rgba(0, 0, 0, 0.3);
+    font-size: 14px;
   }
+
 </style>
-<body> 
-  <p>Uber</p>
-  <button class="request-button">Request now</button>
-  <br>
-  <p>Amazon</p>
-  <button class="amazon-button">Add to Cart</button>
-  <br>
-  <p>GitHub</p>
-  <button class="github-button">Sign up</button>
-  <br>
-  <p>Bootstrap</p>
-  <button class="bootstrap-getstarted-button">Get started</button>
-  <button class="bottstrap-download-button">Download</button>
-  <br>
-  <p>LinkedIn</p>
-  <button class="linkedin-apply-button">Apply on company website</button>
-  <button class="linkedin-save-button">Save</button>
+<body>
+  <button class="subscribe-button">SUBSCRIBE</button>
+  <button class="join-button">JOIN</button>
+  <button class="twet-button">Tweet</button>
 </body>
-</html>
+</html> 
