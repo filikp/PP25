@@ -1,0 +1,82 @@
+.subscribe-button {
+    background-color: rgb(210, 0, 0);
+    color: white;
+    border: none;
+    border-radius: 2px;
+    cursor: pointer;
+    transition: opacity 0.15s;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    padding-left: 16px;
+    padding-right: 16px;
+    vertical-align: top;
+  }
+
+  .subscribe-button:hover{
+    opacity: 0.8;
+  }
+  
+  .subscribe-button:active{
+    opacity: 0.5;
+  }
+
+  .join-button {
+    background-color: white;
+    color: rgb(41, 118, 211);
+    border-color: rgb(41, 118, 211);
+    border-style: solid;
+    border-width: 1px;
+    border-radius: 2px;
+    cursor: pointer;
+    margin-right: 8px;
+    margin-left: 8px;
+    transition: background-color 0.15s, 
+                color 0.15s,
+                margin 0.15s,
+                padding 0.15s;
+    padding-top: 9px;
+    padding-bottom: 9px;
+    padding-left: 16px;
+    padding-right: 16px;
+  }
+
+  .join-button:hover{
+    background-color: rgb(41, 118, 211);
+    color: white;
+    padding-left: 20px;
+    padding-right: 20px;
+    margin-left: 4px;
+    margin-right: 4px;
+  }
+
+  .join-button:active{
+    opacity: 0.7;
+  }
+
+  .twet-button {
+    background-color: rgb(19, 143, 252);
+    color: white;
+    border: none;
+    height: 34px;
+    width: 74px;
+    border-radius: 17px;
+    font-weight: bold;
+    font-size: 15px;
+    cursor: pointer;
+    transition: box-shadow 0.15s, 
+    height 0.1s, 
+    width 0.1s, 
+    font-size 0.1s;
+    vertical-align: top;
+  }
+
+  .twet-button:hover{
+    box-shadow: 3px 3px 7px rgba(0, 0, 0, 0.3);
+  }
+
+  .twet-button:active{
+    height: 31px;
+    width: 70px;
+    box-shadow: 1px 1px 4px rgba(0, 0, 0, 0.3);
+    font-size: 14px;
+  }
