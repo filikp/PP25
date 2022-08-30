@@ -1,4 +1,4 @@
 <?php
-$x = isset($_GET['x']) ? $_GET['x'] : 0;
-$y = isset($_GET['y']) ? $_GET['y'] : 0;
+$x = isset($_GET['x']) ? $_GET['x'] : '';
+$y = isset($_GET['y']) ? $_GET['y'] : '';
 ?>

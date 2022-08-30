@@ -35,6 +35,4 @@ function ljubavniKalkulator($sve)
     return $sve;
 }
 
-$x = 'Miroslav';
-$y = 'Zorin';
 izbrojSlova($x, $y);

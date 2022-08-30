@@ -2,7 +2,7 @@
 <div class="grid-x">
       <div class="cell">
         <div class="callout">
-          &copy; DisiKleep
+          &copy; Filip Kovač
         </div>
       </div>
     </div>

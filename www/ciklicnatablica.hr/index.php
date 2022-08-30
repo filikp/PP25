@@ -2,6 +2,7 @@
 <html lang="en">
 <head>
     <?php require_once 'zaglavlje.php'; ?>
+    <title>Ciklična tablica</title>
     <!-- <link href="minimal-table.css" rel="stylesheet" type="text/css">     -->
 </head>
 
