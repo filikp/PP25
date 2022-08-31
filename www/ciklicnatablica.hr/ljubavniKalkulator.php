@@ -5,10 +5,10 @@ function izbrojSlova($prvoIme, $drugoIme)
     $zajednoImena = $prvoIme . $drugoIme;
     $zajednoImena = mb_strtolower($zajednoImena); // sva slova pratvara u mala slova
     $brojSlovaRedom = '';
+    // razdvaja string u listu s vrijednostima chara
+    $chrArray = preg_split('//u', $zajednoImena, -1, PREG_SPLIT_NO_EMPTY);
     //Lista $kolikoImaKojegSlova kojoj su ključevi slova imena, a vrijednosti ključa koliko se puta ponavlja to slovo
-    foreach(count_chars($zajednoImena, 1) as $i => $vrijednost){
-        $kolikoImaKojegSlova[chr($i)] = $vrijednost; 
-    }
+    $kolikoImaKojegSlova = array_count_values($chrArray);
     //U brojSlovaRedom se sprema koliko ima kojeg slova, redom kako je i napisano ime
     foreach (mb_str_split($zajednoImena) as $slova){
         foreach($kolikoImaKojegSlova as $key => $value){
