@@ -12,6 +12,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Ciklička Tablica</title>
+    <link rel="stylesheet" href="ciklicnaTablica.css">
     <?php require_once 'zaglavlje.php'; ?>
 </head>
 <body>
@@ -42,51 +43,52 @@
                 </form>               
 
                 <?php
+                $x = isset($_GET['x']) ? $_GET['x'] : 0;
+                $y = isset($_GET['y']) ? $_GET['y'] : 0;
+                
                 $vrijednost=1;
                 $brojac=0;
-                $lista=[];
+                $lista=[[]];
+                
                 for ($i = 1; $i<$x+1; $i++){
                     for ($j = 1; $j<$y+1; $j++){
                         $lista[$i][$j]=0;
                     }
                 }
-
+                
                 $i=$x;
                 $j=$y;
                 for($brojElem=0; $brojElem<$x*$y; $brojElem++){
                     $brojElem--;
-                    //Dole s desna na lijevo
                     while($j>0+$brojac){
                         if($brojElem==$x*$y-1){
                             break;
                         }
-                        $lista[$i][$j] = $lista[$i][$j]+$vrijednost++;
+                        $lista[$i][$j] = $lista[$i][$j]+$vrijednost++ . '&#x2190';
                         $j--;
                         $brojElem++;
                     }
-                    //Lijevo odozdo prema gore
+                        
                     $j++;
                     $i--;
                     while($i>0+$brojac){
                         if($brojElem==$x*$y-1){
                             break;
                         }
-                        $lista[$i][$j] = $lista[$i][$j]+$vrijednost++;
+                        $lista[$i][$j] = $lista[$i][$j]+$vrijednost++. '&#x2191';
                         $i--;
                         $brojElem++;
                     }
-                    //Gore s lijeva na desno
                     $i++;
                     $j++;
                     while($j<$y+1-$brojac){
                         if($brojElem==$x*$y-1){
                             break;
                         }
-                        $lista[$i][$j] = $lista[$i][$j]+$vrijednost++;
+                        $lista[$i][$j] = $lista[$i][$j]+$vrijednost++ . '&#x2192';
                         $j++;
                         $brojElem++;
                     }
-                    //Desno odozgo prema dole
                     $j--;
                     $i++;
                     $brojac++;
@@ -94,42 +96,27 @@
                         if($brojElem==$x*$y-1){
                             break;
                         }
-                        $lista[$i][$j] = $lista[$i][$j]+$vrijednost++;
+                        $lista[$i][$j] = $lista[$i][$j]+$vrijednost++ . '&#x2193';
                         $i++;
                         $brojElem++;
                     }
-                    //Vraća na prvi while Dole s desna na lijevo
                     $i--;
                     $j--;
                 }
-                echo '<table border="2">';
+                ?>
+                <table>
+                <?php
                 for($i=1;$i<$x+1;$i++){
                     echo '<tr>';
-                    for($j=1;$j<$y+1;$j++){ 
-                        $r = $lista[$i][$j]*3+50;
-                        if($r>255){
-                            $r-=255;
-                        }
-                        $g = $lista[$i][$j]*5+50;
-                        if($g>255){
-                            $g-=255;
-                        }
-                        $b = $lista[$i][$j]*3+50;
-                        if($b>255){
-                            $b-=255;
-                        }
-                        ?>
-                        <th style="background-color: rgb(<?=$r?>,<?=$g?>,<?=$b?>)">
-                        <?php
-                        echo $lista[$i][$j];
+                    for($j=1;$j<$y+1;$j++){
+                        echo '<th class="tablica">';
+                        echo $lista[$i][$j]; 
                         echo '</th>';
                     }
                     echo '</tr>';
                 }
-                echo '</table>';
-
-                echo '<hr />';
                 ?>
+                </table>
         </div>
             </div>
         </div>        
