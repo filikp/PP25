@@ -1,0 +1,37 @@
+<?php /** https://get.foundation/sites/docs/responsive-navigation.html#responsive-toggle */ ?>
+<div class="title-bar" data-responsive-toggle="example-menu" data-hide-for="medium">
+  <button class="menu-icon" type="button" data-toggle="example-menu"></button>
+  <div class="title-bar-title">Menu</div>
+</div>
+
+<div class="top-bar" id="example-menu">
+  <div class="top-bar-left">
+    <ul class="dropdown menu" data-dropdown-menu>
+      <li class="menu-text"><?php echo App::config('nazivApp');?></li>
+      <li><a href="<?=App::config('url') ?>">Početna</a></li>
+      <?php if(App::auth()): ?>
+        <li><a href="<?=App::config('url')?>nadzornaploca">Nadzorna ploča</a></li>
+        <li>
+        <a href="#">Programi</a>
+        <ul class="vertical menu">
+          <li><a href="<?=App::config('url')?>smjer">Smjerovi</a></li>
+          <li><a href="<?=App::config('url')?>predavac">Predavači</a></li>
+          <li><a href="<?=App::config('url')?>polaznik">Polaznici</a></li>
+          <li><a href="<?=App::config('url')?>grupa">Grupe</a></li>
+        </ul>
+      </li>
+      <?php endif; ?>
+    </ul>
+  </div>
+  <div class="top-bar-right">
+    <ul class="menu">
+      <?php if(!App::auth()): ?>
+        <li><a href="<?=App::config('url')?>login/prijava">Prijava</a></li>
+      <?php else: ?>
+        <li><a href="<?=App::config('url')?>login/odjava">Odjava 
+          <?=App::user()->prezime?> <?=App::user()->ime?> 
+        </a></li>
+      <?php endif; ?>
+    </ul>
+  </div>
+</div>

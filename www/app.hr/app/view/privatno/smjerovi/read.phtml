@@ -1,0 +1,32 @@
+ <?php // Log::log($smjerovi); ?>
+
+ <table>
+    <thead>
+        <tr>
+            <th>Naziv</th>
+            <th>Cijena</th>
+            <th>Trajanje</th>
+            <th>Upisnina</th>
+            <th>Certificiran</th>
+            <th>Akcija</th>
+        </tr>
+    </thead>
+    <tbody>
+        <?php foreach($smjerovi as $s): ?>
+            <tr>
+                <td><?=$s->naziv?></td>
+                <td><?=$s->cijena?></td>
+                <td><?=$s->trajanje?></td>
+                <td><?=$s->upisnina?></td>
+                <td><?=$s->certificiran?></td>
+                <td>
+                    <a href="<?=App::config('url')?>smjer/promjena/<?=$s->sifra?>">
+                        <i style="color: blue;" 
+                        class="step fi-pencil size-36">
+                        </i>
+                    </a>
+                </td>
+            </tr>
+        <?php endforeach;?>
+    </tbody>
+ </table>
