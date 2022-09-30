@@ -1,0 +1,13 @@
+<from class="log-in-form" method="post"
+action="<?=App::config('url')?>login/autorizacija">
+<h4 class="text-center">Prijava</h4>
+  <label>Email
+    <input type="email" name="email" value="<?=$email?>">
+  </label>
+  <label>Lozinka
+    <input type="password" name="password" placeholder="o">
+  </label>
+  <?=$poruka?>
+  <p><input type="submit" class="button expanded" value="Log in"></input></p>
+
+</form>
