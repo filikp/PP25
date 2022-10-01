@@ -12,18 +12,11 @@ class LoginController extends Controller
        
         if(!isset($_POST['email']) || 
         !isset($_POST['password'])){
-            //$this->view->render('prijava',[
-            //    'poruka'=>'Email i lozinka obavezno'
-            //]);
             $this->prijava();
             return;
         }
 
-
         if(strlen(trim($_POST['email']))===0){
-            //$this->view->render('prijava',[
-            //    'poruka'=>'Email obavezno'
-            //]);
             $this->prijavaView('','Email obavezno');
             return;
         }

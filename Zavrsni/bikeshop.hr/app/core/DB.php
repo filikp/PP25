@@ -12,8 +12,8 @@ class DB extends PDO
         $dsn='mysql:host=' . 
             $server . ';dbname=' . $baza .
             ';charset=utf8';
-        parent::__construct($dsn,$korisnik,$lozinka);
-        $this->setAttribute(PDO::ATTR_DEFAULT_FETCH_MODE,PDO::FETCH_OBJ);
+        parent::__construct($dsn, $korisnik, $lozinka);
+        $this->setAttribute(PDO::ATTR_DEFAULT_FETCH_MODE, PDO::FETCH_OBJ);
     }
 
     public static function getInstance()

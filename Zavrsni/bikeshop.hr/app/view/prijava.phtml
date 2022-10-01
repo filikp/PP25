@@ -1,6 +1,5 @@
-<from class="log-in-form" method="post"
-action="<?=App::config('url')?>login/autorizacija">
-<h4 class="text-center">Prijava</h4>
+<form class="log-in-form" method="post" action="<?=App::config('url')?>login/autorizacija">
+  <h4 class="text-center">Prijava</h4>
   <label>Email
     <input type="email" name="email" value="<?=$email?>">
   </label>
@@ -9,5 +8,5 @@ action="<?=App::config('url')?>login/autorizacija">
   </label>
   <?=$poruka?>
   <p><input type="submit" class="button expanded" value="Log in"></input></p>
-
 </form>
+

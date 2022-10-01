@@ -9,9 +9,9 @@ if($dev){
           'nazivApp'=>'Bike Shop',
           'baza'=>[
                'server'=>'localhost',
-               'baza'=>'edunovapp25',
-               'korisnik'=>'edunova',
-               'lozinka'=>'edunova'
+               'baza'=>'trgovina_bicikala',
+               'korisnik'=>'bikeshop',
+               'lozinka'=>'bikeshop'
           ]
      ];
 }else{
@@ -23,8 +23,8 @@ if($dev){
           'baza'=>[
                'server'=>'localhost',
                'baza'=>'artemida_edunovapp25',
-               'korisnik'=>'artemida_edunova13',
-               'lozinka'=>'vckR9-46[q5J'
+               'korisnik'=>'artemida_edunova',
+               'lozinka'=>'4v*&Yz.!E3)@'
           ]
      ];
 }
