@@ -1,0 +1,48 @@
+<form method="post" 
+action="<?=App::config('url')?>bicikl/novi">
+  <h4 class="text-center">Dodavanje novog bicikla</h4>
+  <label>Proizvođač
+    <input type="text" name="proizvodac" value="<?=$bicikl->proizvodac?>" />
+  </label>
+
+  <label>Namjena
+    <input type="text" name="namjena" value="<?=$bicikl->namjena?>" />
+  </label>
+
+  <label>Električni
+    <input type="checkbox" name="elektricni" <?php 
+    if($bicikl->elektricni){
+        echo 'checked="checked"';
+    }
+    ?> />
+  </label>
+
+  <label>Broj brzina
+    <input type="number" name="broj_brzina" value="<?=$bicikl->broj_brzina?>" />
+  </label>
+
+  <label>Veličina
+    <input type="number" name="velicina_cm" value="<?=$bicikl->velicina_cm?>" />
+  </label>
+
+  <label>Cijena
+    <input type="number" name="cijena_kn" value="<?=$bicikl->cijena_kn?>" />
+  </label>
+
+  <?=$poruka?>
+
+  <div class="grid-x grid-padding-x">
+    <div class="large-6 cell">
+        <a class="alert button expanded" 
+            href="<?=App::config('url')?>smjer">Odustani</a>
+    </div>
+    <div class="large-6 cell">
+        <input type="submit" class="button expanded" value="Dodaj"></input>
+    </div>
+  </div>
+
+
+
+</form>
+
+

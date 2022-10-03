@@ -1,11 +1,14 @@
+<a href="<?=App::config('url')?>bicikl/novi"
+    class="success button expanded">Dodaj novi</a>
+
 <table>
     <thead>
         <tr>
-            <th>Proizvodac</th>
+            <th>Proizvođač</th>
             <th>Namjena</th>
-            <th>Elektricni</th>
+            <th>Električni</th>
             <th>Broj brzina</th>
-            <th>Velicina (cm)</th>
+            <th>Veličina (cm)</th>
             <th>Cijena (kn)</th>
         </tr>
     </thead>
@@ -18,6 +21,17 @@
                 <td><?=$b->broj_brzina?></td>
                 <td><?=$b->velicina_cm?></td>
                 <td><?=$b->cijena_kn?></td>
+                <td>
+                    <a href="<?=App::config('url')?>bicikl/promjena/<?=$b->sifra?>">
+                        <i style="color: blue;" 
+                        class="step fi-pencil size-36"></i>
+                     </a>
+                        <!-- Loš način --> &nbsp;&nbsp;<!-- bolji način CSS margin-right -->
+                     <a href="<?=App::config('url')?>bicikl/brisanje/<?=$b->sifra?>">
+                        <i style="color: red;" 
+                        class="step fi-page-delete size-36"></i>
+                     </a>
+                </td>
             </tr>
         <?php endforeach;?>
     </tbody>
