@@ -6,7 +6,7 @@ use trgovina_bicikala;
 
 # Od ovoga ide u Edunova SHARED HOSTING
 
-alter database artemida_edunovapp25 character set utf8mb4;
+alter database artemida_bikeshop character set utf8mb4;
 
 create table operater(
     sifra int not null primary key auto_increment,

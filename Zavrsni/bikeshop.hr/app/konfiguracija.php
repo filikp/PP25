@@ -22,9 +22,9 @@ if($dev){
           'nazivApp'=>'Bike Shop',
           'baza'=>[
                'server'=>'localhost',
-               'baza'=>'artemida_edunovapp25',
-               'korisnik'=>'artemida_edunova',
-               'lozinka'=>'4v*&Yz.!E3)@'
+               'baza'=>'artemida_bikeshop',
+               'korisnik'=>'artemida_bikeshop',
+               'lozinka'=>'@oMP0%AF{gjg'
           ]
      ];
 }
