@@ -2,6 +2,22 @@
 
 class Bicikl
 {
+
+    public static function brisanje($sifra)
+    {
+        $veza = DB::getInstance();
+        $izraz = $veza->prepare('
+        
+            select count(*) from bicikl where sifra=:sifra
+        
+        ');
+        $izraz->execute([
+            'sifra'=>$sifra
+        ]);
+        $ukupno = $izraz->fetchColumn();
+        return $ukupno==0; 
+    }
+
     public static function readOne($sifra)
     {
         $veza = DB::getInstance();

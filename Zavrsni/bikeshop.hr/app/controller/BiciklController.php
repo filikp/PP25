@@ -83,26 +83,27 @@ class BiciklController extends AutorizacijaController
         
     }
 
-    // public function brisanje($sifra)
-    // {
+    public function brisanje($sifra)
+    {
 
-    //     $bicikl = Bicikl::readOne($sifra);
-    //     if($bicikl==null){
-    //         header('location: ' . App::config('url') . 'bicikl');
-    //     }
+        $bicikl = Bicikl::readOne($sifra);
+        if($bicikl==null){
+            header('location: ' . App::config('url') . 'bicikl');
+        }
 
-    //     if(!isset($_POST['obrisi'])){
-    //         $this->view->render($this->phtmlDir . 'delete',[
-    //             'bicikl' => $bicikl,
-    //             'brisanje'=>Bicikl::brisanje($sifra),
-    //             'poruka' => 'Detalji bicikla za brisanje'
-    //         ]);
-    //         return;
-    //     }
+        if(!isset($_POST['obrisi'])){
+            $this->view->render($this->phtmlDir . 'delete',[
+                'bicikl' => $bicikl,
+                'brisanje'=>Bicikl::brisanje($sifra),
+                'poruka' => 'Detalji bicikla za brisanje'
+            ]);
+            return;
+        }
 
-    //     Bicikl::delete($sifra);
-    //     header('location: ' . App::config('url') . 'bicikl');
-    // }
+        Bicikl::delete($sifra);
+        header('location: ' . App::config('url') . 'bicikl');
+    }
+    
 
     private function kontrolaNovi()
     {

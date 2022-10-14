@@ -1,0 +1,52 @@
+<form method="post" 
+action="<?=App::config('url')?>bicikl/promjena/<?=$bicikl->sifra?>">
+  <h4 class="text-center">Brisanje bicikla</h4>
+  <label>Proizvođač
+    <input disabled="disabled" type="text" name="proizvodac" value="<?=$bicikl->proizvodac?>" />
+  </label>
+
+  <label>Namjena
+    <input disabled="disabled" type="text" name="namjena" value="<?=$bicikl->namjena?>" />
+  </label>
+
+  <label>Elektricni
+    <input disabled="disabled" type="checkbox" name="elektricni" <?php 
+    if($bicikl->elektricni){
+        echo 'checked="checked"';
+    }
+    ?> />
+  </label>
+
+  <label>Broj brzina
+    <input disabled="disabled" type="number" name="broj_brzina" value="<?=$bicikl->broj_brzina?>" />
+  </label>
+
+  <label>Veličina
+    <input disabled="disabled" type="number" name="velicina_cm" value="<?=$bicikl->velicina_cm?>" />
+  </label>
+
+  <label>Cijena
+    <input disabled="disabled" type="number" name="cijena_kn" value="<?=$bicikl->cijena_kn?>" />
+  </label>
+
+  <?=$poruka?>
+
+  <div class="grid-x grid-padding-x">
+    <div class="large-6 cell">
+        <a class="alert button expanded" 
+            href="<?=App::config('url')?>bicikl">Odustani</a>
+    </div>
+    <div class="large-6 cell">
+        <?php if($brisanje): ?>
+            <input type="hidden" name="obrisi" value="true" />
+            <input type="submit" class="button expanded" value="Obriši" />
+        <?php else: ?>
+            Bicikl se ne može obrisati
+        <?php endif; ?>
+    </div>
+  </div>
+
+
+</form>
+
+
