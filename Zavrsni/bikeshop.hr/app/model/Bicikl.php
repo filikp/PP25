@@ -54,7 +54,7 @@ class Bicikl
                 namjena=:namjena,
                 elektricni=:elektricni,
                 broj_brzina=:broj_brzina,
-                velicina_cm=:velicina_cm
+                velicina_cm=:velicina_cm,
                 cijena_kn=:cijena_kn
                     where sifra=:sifra
         
