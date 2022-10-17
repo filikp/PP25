@@ -23,7 +23,7 @@ values
 ('admin@edunova.hr', '$2a$12$sszLV2fOdRni9IyfAReXXuAgF1VqNNlkbdpqJbSo.c.MLzNGpESJO', 
 'Edunova', 'Administrator', 'admin'),
 ('oper@edunova.hr', '$2a$12$qnrYL8g0uKDr6tDqJXK9xOVDYdOZb0UYKe/w2TKKEneHGUBj1.a62', 
-'Edunova', 'Operater', 'oper');
+'Filip', 'Kovač', 'oper');
 
 create table bicikl (
     sifra int not null primary key auto_increment,

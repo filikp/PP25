@@ -54,7 +54,7 @@ class BiciklController extends AutorizacijaController
         ]);
     }
 
-    
+
     public function brisanje($sifra)
     {
 
@@ -119,10 +119,10 @@ class BiciklController extends AutorizacijaController
 
     private function kontrolaProizvodac()
     {
-        Log::log($this->bicikl->proizvodac);
+        Log::logg($this->bicikl->proizvodac);
         $this->bicikl->proizvodac=str_replace('&nbsp;',' ',$this->bicikl->proizvodac);
         $this->bicikl->proizvodac=trim($this->bicikl->proizvodac);
-        Log::log($this->bicikl->proizvodac);
+        Log::logg($this->bicikl->proizvodac);
         if(strlen($this->bicikl->proizvodac)===0){
             $this->poruka = 'Proizvođač obavezno';
             return false;
