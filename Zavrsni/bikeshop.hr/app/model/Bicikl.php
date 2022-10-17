@@ -8,7 +8,7 @@ class Bicikl
         $veza = DB::getInstance();
         $izraz = $veza->prepare('
         
-            select count(*) from bicikl where sifra=:sifra
+            select * from bicikl where sifra=:sifra
         
         ');
         $izraz->execute([

@@ -40,11 +40,11 @@ class BiciklController extends AutorizacijaController
 
         $this->bicikl = (object) $_POST;
         $this->bicikl->sifra=$sifra;
-       // $this->bicikl->elektricni = isset($_POST['elektricni']);
+        $this->bicikl->elektricni = isset($_POST['elektricni']);
 
         if($this->kontrolaPromjena()){
             Bicikl::update((array)$this->bicikl);
-            //header('location: ' . App::config('url') . 'smjer');
+            //header('location: ' . App::config('url') . 'bicikl');
             return;
         }
 
@@ -53,6 +53,29 @@ class BiciklController extends AutorizacijaController
             'poruka'=>$this->poruka
         ]);
     }
+
+    
+    public function brisanje($sifra)
+    {
+
+        $bicikl = Bicikl::readOne($sifra);
+        if($bicikl==null){
+            header('location: ' . App::config('url') . 'bicikl');
+        }
+
+        if(!isset($_POST['obrisi'])){
+            $this->view->render($this->phtmlDir . 'delete',[
+                'bicikl' => $bicikl,
+                'brisanje'=>Bicikl::brisanje($sifra),
+                'poruka' => 'Detalji bicikla za brisanje'
+            ]);
+            return;
+        }
+
+        Bicikl::delete($sifra);
+        header('location: ' . App::config('url') . 'bicikl');
+    }
+
 
     public function novi()
     {
@@ -81,27 +104,6 @@ class BiciklController extends AutorizacijaController
             'poruka'=>$this->poruka
         ]);
         
-    }
-
-    public function brisanje($sifra)
-    {
-
-        $bicikl = Bicikl::readOne($sifra);
-        if($bicikl==null){
-            header('location: ' . App::config('url') . 'bicikl');
-        }
-
-        if(!isset($_POST['obrisi'])){
-            $this->view->render($this->phtmlDir . 'delete',[
-                'bicikl' => $bicikl,
-                'brisanje'=>Bicikl::brisanje($sifra),
-                'poruka' => 'Detalji bicikla za brisanje'
-            ]);
-            return;
-        }
-
-        Bicikl::delete($sifra);
-        header('location: ' . App::config('url') . 'bicikl');
     }
     
 
