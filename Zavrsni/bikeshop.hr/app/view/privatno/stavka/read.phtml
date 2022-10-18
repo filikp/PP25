@@ -1,3 +1,10 @@
+<style>
+tr{
+    display: flex;
+    justify-content: space-around;
+}
+</style>
+
 <a href="<?=App::config('url')?>stavka/novi"
     class="success button expanded">Dodaj novi</a>
 
@@ -6,7 +13,6 @@
         <tr>
             <th>Bicikl</th>
             <th>Kolicina</th>
-            <th>Broj racuna</th>
             <th>Akcija</th>
         </tr>
     </thead>
@@ -15,7 +21,6 @@
             <tr>
                 <td><?=$s->bicikl?></td>
                 <td><?=$s->kolicina?></td>
-                <td><?=$s->racun?></td>
                 <td>
                     <a href="<?=App::config('url')?>stavka/promjena/<?=$s->sifra?>">
                         <i style="color: blue;" 

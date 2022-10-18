@@ -1,3 +1,8 @@
+<style>
+td, th{
+    text-align: center;
+</style>
+
 <a href="<?=App::config('url')?>racun/novi"
     class="success button expanded">Dodaj novi</a>
 
@@ -7,6 +12,7 @@
             <th>Vrijeme kupnje</th>
             <th>Prodavac</th>
             <th>Kupac</th>
+            <th>Stavka</th>
             <th>Akcija</th>
         </tr>
     </thead>
@@ -16,6 +22,7 @@
                 <td><?=$r->vrijeme_kupnje?></td>
                 <td><?=$r->prodavac?></td>
                 <td><?=$r->kupac?></td>
+                <td><?=$r->stavka?></td>
                 <td>
                     <a href="<?=App::config('url')?>racun/promjena/<?=$r->sifra?>">
                         <i style="color: blue;" 
