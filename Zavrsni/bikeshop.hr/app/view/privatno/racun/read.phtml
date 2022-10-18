@@ -1,32 +1,28 @@
-<a href="<?=App::config('url')?>prodavac/novi"
+<a href="<?=App::config('url')?>racun/novi"
     class="success button expanded">Dodaj novi</a>
 
-<table>
+    <table>
     <thead>
         <tr>
-            <th>Ime</th>
-            <th>Prezime</th>
-            <th>Email</th>
-            <th>OIB</th>
-            <th>IBAN</th>
+            <th>Vrijeme kupnje</th>
+            <th>Prodavac</th>
+            <th>Kupac</th>
             <th>Akcija</th>
         </tr>
     </thead>
     <tbody>
-        <?php foreach($prodavaci as $p): ?>
+        <?php foreach($racun as $r): ?>
             <tr>
-                <td><?=$p->ime?></td>
-                <td><?=$p->prezime?></td>
-                <td><?=$p->email?></td>
-                <td><?=$p->OIB?></td>
-                <td><?=$p->IBAN?></td>
+                <td><?=$r->vrijeme_kupnje?></td>
+                <td><?=$r->prodavac?></td>
+                <td><?=$r->kupac?></td>
                 <td>
-                    <a href="<?=App::config('url')?>prodavac/promjena/<?=$p->sifra?>">
+                    <a href="<?=App::config('url')?>racun/promjena/<?=$r->sifra?>">
                         <i style="color: blue;" 
                         class="step fi-pencil size-36"></i>
                     </a>
                         <!-- Loš način --> &nbsp;&nbsp;<!-- bolji način CSS margin-right -->
-                    <a href="<?=App::config('url')?>prodavac/brisanje/<?=$p->sifra?>">
+                    <a href="<?=App::config('url')?>racun/brisanje/<?=$r->sifra?>">
                         <i style="color: red;" 
                         class="step fi-page-delete size-36"></i>
                      </a>
