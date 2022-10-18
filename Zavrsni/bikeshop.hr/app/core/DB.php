@@ -1,6 +1,5 @@
 <?php
 
-// čitati https://phpenthusiast.com/blog/the-singleton-design-pattern-in-php
 class DB extends PDO
 {
 

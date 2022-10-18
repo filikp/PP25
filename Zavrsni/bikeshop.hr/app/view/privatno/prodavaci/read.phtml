@@ -1,0 +1,36 @@
+<!-- <a href="<?=App::config('url')?>prodavac/novi"
+    class="success button expanded">Dodaj novi</a> -->
+
+<table>
+    <thead>
+        <tr>
+            <th>Ime</th>
+            <th>Prezime</th>
+            <th>Email</th>
+            <th>OIB</th>
+            <th>IBAN</th>
+        </tr>
+    </thead>
+    <tbody>
+        <?php foreach($prodavaci as $p): ?>
+            <tr>
+                <td><?=$p->ime?></td>
+                <td><?=$p->prezime?></td>
+                <td><?=$p->email?></td>
+                <td><?=$p->OIB?></td>
+                <td><?=$p->IBAN?></td>
+                <td>
+                    <!-- <a href="<?=App::config('url')?>bicikl/promjena/<?=$p->sifra?>">
+                        <i style="color: blue;" 
+                        class="step fi-pencil size-36"></i>
+                     </a> -->
+                        <!-- Loš način --> &nbsp;&nbsp;<!-- bolji način CSS margin-right -->
+                    <!-- <a href="<?=App::config('url')?>bicikl/brisanje/<?=$p->sifra?>">
+                        <i style="color: red;" 
+                        class="step fi-page-delete size-36"></i>
+                     </a> -->
+                </td>
+            </tr>
+        <?php endforeach;?>
+    </tbody>
+</table>

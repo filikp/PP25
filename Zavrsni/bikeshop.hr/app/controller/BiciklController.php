@@ -12,9 +12,11 @@ class BiciklController extends AutorizacijaController
     public function index()
     {
         $nf = new NumberFormatter("hr-HR", \NumberFormatter::DECIMAL);
+        $nf->setPattern('#,##0.00');
         $bicikl = Bicikl::read();
         foreach($bicikl as $b){
-            $b->cijena_kn = $nf->format($b->cijena_kn);
+            $b->cijena_kn = $nf->format((float)$b->cijena_kn);
+            $b->velicina_cm = $nf->format((float)$b->velicina_cm);
         }
 
         $this->view->render($this->phtmlDir . 'read',[
@@ -44,7 +46,7 @@ class BiciklController extends AutorizacijaController
 
         if($this->kontrolaPromjena()){
             Bicikl::update((array)$this->bicikl);
-            //header('location: ' . App::config('url') . 'bicikl');
+            header('location: ' . App::config('url') . 'bicikl');
             return;
         }
 
@@ -66,7 +68,7 @@ class BiciklController extends AutorizacijaController
         if(!isset($_POST['obrisi'])){
             $this->view->render($this->phtmlDir . 'delete',[
                 'bicikl' => $bicikl,
-                'brisanje'=>Bicikl::brisanje($sifra),
+                'brisanje' => Bicikl::brisanje($sifra),
                 'poruka' => 'Detalji bicikla za brisanje'
             ]);
             return;
@@ -119,10 +121,10 @@ class BiciklController extends AutorizacijaController
 
     private function kontrolaProizvodac()
     {
-        Log::logg($this->bicikl->proizvodac);
+        Log::log($this->bicikl->proizvodac);
         $this->bicikl->proizvodac=str_replace('&nbsp;',' ',$this->bicikl->proizvodac);
         $this->bicikl->proizvodac=trim($this->bicikl->proizvodac);
-        Log::logg($this->bicikl->proizvodac);
+        Log::log($this->bicikl->proizvodac);
         if(strlen($this->bicikl->proizvodac)===0){
             $this->poruka = 'Proizvođač obavezno';
             return false;

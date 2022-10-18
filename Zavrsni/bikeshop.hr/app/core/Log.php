@@ -2,7 +2,7 @@
 
 class Log
 {
-    public static function logg($sto)
+    public static function log($sto)
     {
         echo '<pre>';
         print_r($sto);

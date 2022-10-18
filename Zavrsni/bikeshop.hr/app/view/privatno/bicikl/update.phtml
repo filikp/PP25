@@ -9,7 +9,7 @@ action="<?=App::config('url')?>bicikl/promjena/<?=$bicikl->sifra?>">
     <input type="text" name="namjena" value="<?=$bicikl->namjena?>" />
   </label>
 
-  <label>Elektricni
+  <label>Električni
     <input type="checkbox" name="elektricni" <?php 
     if($bicikl->elektricni){
         echo 'checked="checked"';
