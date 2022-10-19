@@ -1,30 +1,29 @@
-<style>
-tr{
-    display: flex;
-    justify-content: space-around;
-}
-</style>
-
 <a href="<?=App::config('url')?>racun/novi"
     class="success button expanded">Dodaj novi</a>
 
     <table>
     <thead>
         <tr>
+            <th>Bicikl</th>
+            <th>Ime p</th>
+            <th>Prezime p</th>
+            <th>Ime k</th>
             <th>Vrijeme kupnje</th>
-            <th>Prodavac</th>
-            <th>Kupac</th>
-            <th>Stavka</th>
+            <th>Cijena</th>
+            <th>Količina</th>
             <th>Akcija</th>
         </tr>
     </thead>
     <tbody>
         <?php foreach($racun as $r): ?>
             <tr>
+                <td><?=$r->proizvodac?></td>
+                <td><?=$r->ime_prodavaca?></td>
+                <td><?=$r->prezime_prodavaca?></td>
+                <td><?=$r->ime_kupca?></td>
                 <td><?=$r->vrijeme_kupnje?></td>
-                <td><?=$r->prodavac?></td>
-                <td><?=$r->kupac?></td>
-                <td><?=$r->stavka?></td>
+                <td><?=$r->cijena_kn?></td>
+                <td><?=$r->kolicina?></td>
                 <td>
                     <a href="<?=App::config('url')?>racun/promjena/<?=$r->sifra?>">
                         <i style="color: blue;" 

@@ -11,9 +11,8 @@ class StavkaController extends AutorizacijaController
 
     public function index()
     {
-        $stavka = Stavka::read();
-        $this->view->render($this->phtmlDir . 'read',[
-            'stavka' => $stavka
+        $this->view->render($this->phtmlDir . 'index',[
+            'stavka'=>Stavka::read()
         ]);
     }
 }

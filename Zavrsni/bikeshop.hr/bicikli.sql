@@ -74,7 +74,7 @@ insert into bicikl (proizvodac, namjena, elektricni, broj_brzina, velicina_cm, c
 values	('Trek', 'MTB', false, 30, 48, 7999),
 		('Trek', 'Cestovni', false, 27, 43, 5499),
 		('Giant', 'MTB', false, 20, 51, 9899),
-		('Scott', 'Trkači', false, 30, 53.5, 13699),
+		('Scott', 'Trkači', false, 30, 53, 13699),
 		('Nakamura', 'Cestovni', false, 27, 38, 3599),
 		('Trek', 'MTB', true, 11, 48, 45199);
 

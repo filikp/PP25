@@ -16,7 +16,6 @@ class BiciklController extends AutorizacijaController
         $bicikl = Bicikl::read();
         foreach($bicikl as $b){
             $b->cijena_kn = $nf->format((float)$b->cijena_kn);
-            $b->velicina_cm = $nf->format((float)$b->velicina_cm);
         }
 
         $this->view->render($this->phtmlDir . 'read',[

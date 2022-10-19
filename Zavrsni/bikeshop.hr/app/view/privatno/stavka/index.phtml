@@ -1,0 +1,19 @@
+<a href="<?=App::config('url')?>stavka/novi"
+    class="success button expanded">Dodaj novi</a>
+
+
+<div class="grid-x grid-padding-x">
+    <?php foreach($stavka as $e):?>
+        <div class="large-3 cell">
+            <div class="callout" style="text-align: center;">
+                slika
+                <hr />
+                <h1 style="font-size: 1.5rem;"> <?=$e->proizvodac?></h1>
+                    Cijena (jednog): <?=$e->cijena_kn?>kn <br>
+                    Količina: <?=$e->kolicina?> <br>
+                    Ukupna cijena: <?=$e->cijena_kn * $e->kolicina?>kn
+                <hr />
+            </div>
+        </div>
+    <?php endforeach ?>
+</div>

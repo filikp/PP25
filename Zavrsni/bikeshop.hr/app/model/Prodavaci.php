@@ -2,6 +2,7 @@
 
 class Prodavaci
 {
+
     public static function readOne($sifra)
     {
         $veza = DB::getInstance();
@@ -28,4 +29,6 @@ class Prodavaci
         $izraz->execute(); // OVO MORA BITI OBAVEZNO
         return $izraz->fetchAll(); // vraća indeksni niz objekata tipa stdClass
     }
+
+
 }
