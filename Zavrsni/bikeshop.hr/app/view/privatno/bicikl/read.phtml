@@ -18,7 +18,10 @@
             <tr>
                 <td><?=$b->proizvodac?></td>
                 <td><?=$b->namjena?></td>
-                <td><?=$b->elektricni?></td>
+                <td>
+                    <i style="color: <?php echo $b->elektricni ? 'green' : 'red';  ?>;" 
+                        class="step <?php echo $b->elektricni ? 'fi-check' : 'fi-x' ?> size-48">
+                </td>
                 <td><?=$b->broj_brzina?></td>
                 <td><?=$b->velicina_cm?></td>
                 <td><?=$b->cijena_kn?></td>

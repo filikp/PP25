@@ -84,7 +84,7 @@ values 	('Mirko', 'Filipović', 'mirkofilipovic@gmail.com', '72839461728', 'HR81
 		('Stjepan', 'Mažuranić', 'stjmazur@gmail.com', '76756281962', 'HR9812220003748590235');
 		
 insert into kupac (ime, prezime, mobitel)
-values 	('Filip', 'Kovač', '09112345678'),
+values 	('Filip', 'Kovač', '0912345678'),
 		('Ivan', 'Horvat', '0992387766'),
 		('Zvonimir', 'Scitovski', '0951185523');
 
