@@ -15,7 +15,7 @@
             <tr>
                 <td><?=$s->proizvodac?></td>
                 <td><?=$s->kolicina?></td>
-                <td><?=$s->cijena_kn?></td>
+                <td><?=$s->cijena_kn?>kn (<?=round($s->cijena_kn/7.5345, 2)?>€)</td>
                 <td>
                     <a href="<?=App::config('url')?>stavka/promjena/<?=$s->sifra?>">
                         <i style="color: blue;" 

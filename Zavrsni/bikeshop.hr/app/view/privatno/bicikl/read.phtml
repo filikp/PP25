@@ -24,7 +24,7 @@
                 </td>
                 <td><?=$b->broj_brzina?></td>
                 <td><?=$b->velicina_cm?></td>
-                <td><?=$b->cijena_kn?></td>
+                <td><?=$b->cijena_kn?>kn (<?=round((float)$b->cijena_kn/7.5345, 2)?>€)</td>
                 <td>
                     <a href="<?=App::config('url')?>bicikl/promjena/<?=$b->sifra?>">
                         <i style="color: blue;" 

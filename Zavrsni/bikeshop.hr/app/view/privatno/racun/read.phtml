@@ -11,6 +11,7 @@
             <th>Vrijeme kupnje</th>
             <th>Cijena</th>
             <th>Količina</th>
+            <th>Ukupna cijena</th>
             <th>Akcija</th>
         </tr>
     </thead>
@@ -22,8 +23,9 @@
                 <td><?=$r->prezime_prodavaca?></td>
                 <td><?=$r->ime_kupca?></td>
                 <td><?=$r->vrijeme_kupnje?></td>
-                <td><?=$r->cijena_kn?></td>
+                <td><?=$r->cijena_kn?>kn (<?=round($r->cijena_kn/7.5345, 2)?>€)</td>
                 <td><?=$r->kolicina?></td>
+                <td><?=$r->cijena_kn*$r->kolicina?>kn (<?=round($r->cijena_kn*$r->kolicina/7.5345, 2)?>€)</td>
                 <td>
                     <a href="<?=App::config('url')?>racun/promjena/<?=$r->sifra?>">
                         <i style="color: blue;" 

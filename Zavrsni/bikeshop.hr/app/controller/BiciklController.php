@@ -11,12 +11,12 @@ class BiciklController extends AutorizacijaController
 
     public function index()
     {
-        $nf = new NumberFormatter("hr-HR", \NumberFormatter::DECIMAL);
-        $nf->setPattern('#,##0.00');
+        // $nf = new NumberFormatter("hr-HR", \NumberFormatter::DECIMAL);
+        // $nf->setPattern('#,##0.00');
         $bicikl = Bicikl::read();
-        foreach($bicikl as $b){
-            $b->cijena_kn = $nf->format((float)$b->cijena_kn);
-        }
+        // foreach($bicikl as $b){
+        //     $b->cijena_kn = $nf->format((float)$b->cijena_kn);
+        // }
 
         $this->view->render($this->phtmlDir . 'read',[
             'bicikl' => $bicikl

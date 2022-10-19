@@ -12,7 +12,7 @@ class RacunController extends AutorizacijaController
     public function index()
     {
         $racun = Racun::read();
-        $this->view->render($this->phtmlDir . 'read',[
+        $this->view->render($this->phtmlDir . 'index',[
             'racun' => $racun
         ]);
     }

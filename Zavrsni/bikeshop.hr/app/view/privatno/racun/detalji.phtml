@@ -1,0 +1,34 @@
+<form method="post" 
+action="<?=App::config('url')?>stavka/promjena/<?=$e->sifra?>">
+  <h4 class="text-center">Detalji košarice</h4>
+  
+  
+  <label>Proizvođač
+    <input type="text" name="prezime" value="<?=$e->proizvodac?>" />
+  </label>
+
+  <label>Cijena
+    <input type="text" name="ime" value="<?=$e->cijena_kn?>" />
+  </label>
+
+
+  <label>Količina
+    <input type="email" name="email" value="<?=$e->kolicina?>" />
+  </label>
+
+  <?=$poruka?>
+
+  <div class="grid-x grid-padding-x">
+    <div class="large-6 cell">
+        <a class="alert button expanded" 
+            href="<?=App::config('url')?>stavka">Odustani</a>
+    </div>
+    <div class="large-6 cell">
+        <input type="submit" class="button expanded" value="Spremi"></input>
+    </div>
+  </div>
+
+
+</form>
+
+

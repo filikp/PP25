@@ -9,9 +9,9 @@
                 slika
                 <hr />
                 <h1 style="font-size: 1.5rem;"> <?=$e->proizvodac?></h1>
-                    Cijena (jednog): <?=$e->cijena_kn?>kn <br>
+                    Cijena (jednog): <?=$e->cijena_kn?>kn (<?=round($e->cijena_kn/7.5345, 2)?>€) <br>
                     Količina: <?=$e->kolicina?> <br>
-                    Ukupna cijena: <?=$e->cijena_kn * $e->kolicina?>kn
+                    Ukupna cijena: <?=$e->cijena_kn*$e->kolicina?>kn (<?=round($e->cijena_kn*$e->kolicina/7.5345, 2)?>€)
                 <hr />
             </div>
         </div>
