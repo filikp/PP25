@@ -5,18 +5,37 @@
 <div class="grid-x grid-padding-x">
     <?php foreach($racun as $r):?>
         <div class="large-6 cell">
-            <div class="callout" style="display: flex; justify-content: space-around;">
-                <div style="display: flex; align-items: center;">
+            <div class="callout" style="display: flex; justify-content: space-between;">
+                <div style="display: flex; align-items: center; justify-content: center; width: 15rem; margin-right: 2rem;">
                 slika
                 </div>
-                <div>
-                    <h1 style="font-size: 1.5rem;"> <?=$r->proizvodac?></h1>
-                        Ime prodavača: <?=$r->ime_prodavaca?> <br>
+                <div style="flex: 1;">
+                    <div style="display: flex; justify-content: space-between;">
+                        <div style="display: flex; flex-direction: column; align-items: center;">
+                            <h5>Bicikl</h5>
+                            <p><?=$r->proizvodac?></p>
+                        </div>
+                        <div style="display: flex; flex-direction: column; align-items: center;">
+                            <h5>Količina</h5>
+                            <p><?=$r->kolicina?></p>
+                        </div>
+                        <div style="display: flex; flex-direction: column; align-items: center;">
+                            <h5>Cijena (1)</h5>
+                            <p><?=$r->cijena_kn?> kn <br>
+                            (<?=round($r->cijena_kn/7.5345, 2)?> €)</p>
+                        </div>
+                        <div style="display: flex; flex-direction: column; align-items: center;">
+                            <h5>Ukupna cijena</h5>
+                            <p><?=$r->cijena_kn*$r->kolicina?> kn <br>
+                            (<?=round($r->cijena_kn*$r->kolicina/7.5345, 2)?> €)</p>
+                        </div>
+                    </div>
+                    <div style="display: flex; flex-direction: column; align-items: flex-end; text-align: end;">
+                        <p>Ime prodavača: <?=$r->ime_prodavaca?> <br>
                         Ime kupca: <?=$r->ime_kupca?> <br>
-                        Vrijeme kupnje: <?=$r->vrijeme_kupnje?> <br>
-                        Cijena (jednog): <?=$r->cijena_kn?>kn (<?=round($r->cijena_kn/7.5345, 2)?>€) <br>
-                        Količina: <?=$r->kolicina?> <br>
-                        Ukupna cijena: <?=$r->cijena_kn*$r->kolicina?>kn (<?=round($r->cijena_kn*$r->kolicina/7.5345, 2)?>€)
+                        Vrijeme kupnje: <?=$r->vrijeme_kupnje?></p>
+                    </div>
+                    
                 </div>
             </div>
         </div>

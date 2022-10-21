@@ -1,19 +1,33 @@
-<a href="<?=App::config('url')?>stavka/novi"
+<a href="<?=App::config('url')?>stavka/nova"
     class="success button expanded">Dodaj novi</a>
 
-
-<div class="grid-x grid-padding-x">
-    <?php foreach($stavka as $e):?>
-        <div class="large-3 cell">
-            <div class="callout" style="text-align: center;">
-                slika
-                <hr />
-                <h1 style="font-size: 1.5rem;"> <?=$e->proizvodac?></h1>
-                    Cijena (jednog): <?=$e->cijena_kn?>kn (<?=round($e->cijena_kn/7.5345, 2)?>€) <br>
-                    Količina: <?=$e->kolicina?> <br>
-                    Ukupna cijena: <?=$e->cijena_kn*$e->kolicina?>kn (<?=round($e->cijena_kn*$e->kolicina/7.5345, 2)?>€)
-                <hr />
-            </div>
-        </div>
-    <?php endforeach ?>
-</div>
+    <table>
+    <thead>
+        <tr>
+            <th>Bicikl</th>
+            <th>Kolicina</th>
+            <th>Cijena</th>
+            <th>Akcija</th>
+        </tr>
+    </thead>
+    <tbody>
+        <?php foreach($stavka as $s): ?>
+            <tr>
+                <td><?=$s->proizvodac?></td>
+                <td><?=$s->kolicina?></td>
+                <td><?=$s->cijena_kn?>kn (<?=round($s->cijena_kn/7.5345, 2)?>€)</td>
+                <td>
+                    <a href="<?=App::config('url')?>stavka/promjena/<?=$s->sifra?>">
+                        <i style="color: blue;" 
+                        class="step fi-pencil size-36"></i>
+                    </a>
+                        &nbsp;&nbsp;
+                    <a href="<?=App::config('url')?>stavka/brisanje/<?=$s->sifra?>">
+                        <i style="color: red;" 
+                        class="step fi-page-delete size-36"></i>
+                     </a>
+                </td>
+            </tr>
+        <?php endforeach;?>
+    </tbody>
+</table>
