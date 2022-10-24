@@ -25,7 +25,20 @@ class Kupci
             select * from kupac order by prezime
         
         ');
-        $izraz->execute(); // OVO MORA BITI OBAVEZNO
-        return $izraz->fetchAll(); // vraća indeksni niz objekata tipa stdClass
+        $izraz->execute();
+        return $izraz->fetchAll();
+    }
+
+    public static function create($kupac)
+    {
+        $veza = DB::getInstance();
+        $izraz = $veza->prepare('
+        
+        insert into 
+        kupac (ime, prezime, mobitel)
+        values (:ime, :prezime, :mobitel)
+        
+        ');
+        $izraz->execute($kupac);
     }
 }
