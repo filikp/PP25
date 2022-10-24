@@ -16,14 +16,14 @@ class StavkaController extends AutorizacijaController
         ]);
     }
 
-    public function nova()
-    {
-        $nova = Stavka::create([
-            'bicikl'=>'',
-            'kolicina'=>'1'
-        ]);
-        header('location: ' . App::config('url') 
-                . 'stavka/promjena/' . $nova);
-    }
+    // public function nova()
+    // {
+    //     $nova = Stavka::create([
+    //         'bicikl'=>'',
+    //         'kolicina'=>'1'
+    //     ]);
+    //     header('location: ' . App::config('url') 
+    //             . 'stavka/promjena/' . $nova);
+    // }
 
 }

@@ -9,7 +9,6 @@ class Prodavac
         $izraz = $veza->prepare('
         
             select count(*) from racun where prodavac=:sifra
-            /*select * from prodavac where sifra=:sifra*/
         
         ');
         $izraz->execute([
