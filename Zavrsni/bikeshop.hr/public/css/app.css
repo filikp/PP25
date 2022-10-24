@@ -7,3 +7,10 @@
     padding: 1rem;
     border-radius: 0;
 }
+
+.podnozje{
+    position: fixed;
+    bottom: 0;
+    width: 100%; 
+    text-align: center;
+}

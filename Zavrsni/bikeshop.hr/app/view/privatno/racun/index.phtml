@@ -4,7 +4,7 @@
 
 <div class="grid-x grid-padding-x">
     <?php foreach($racun as $r):?>
-        <div class="large-6 cell">
+        <div class="large-12 cell">
             <div class="callout" style="display: flex; justify-content: space-between;">
                 <div style="display: flex; align-items: center; justify-content: center; width: 15rem; margin-right: 2rem;">
                 slika
@@ -31,8 +31,8 @@
                         </div>
                     </div>
                     <div style="display: flex; flex-direction: column; align-items: flex-end; text-align: end;">
-                        <p>Ime prodavača: <?=$r->ime_prodavaca?> <br>
-                        Ime kupca: <?=$r->ime_kupca?> <br>
+                        <p>Prodavača: <?=$r->ime_prodavaca?> <?=$r->prezime_prodavaca?><br>
+                        Kupac: <?=$r->ime_kupca?> <?=$r->prezime_kupca?><br>
                         Vrijeme kupnje: <?=$r->vrijeme_kupnje?></p>
                     </div>
                     

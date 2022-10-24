@@ -1,0 +1,39 @@
+<form method="post" 
+action="<?=App::config('url')?>prodavac/novi">
+  <h4 class="text-center">Dodavanje novog prodavača</h4>
+  <label>Ime
+    <input type="text" name="ime" value="<?=$prodavac->ime?>" />
+  </label>
+
+  <label>Prezime
+    <input type="text" name="prezime" value="<?=$prodavac->prezime?>" />
+  </label>
+
+  <label>email
+    <input type="text" name="email" value="<?=$prodavac->email?>" />
+  </label>
+
+  <label>OIB
+    <input type="number" name="OIB" value="<?=$prodavac->OIB?>" />
+  </label>
+
+  <label>IBAN
+    <input type="text" name="IBAN" value="<?=$prodavac->IBAN?>" />
+  </label>
+
+  <?=$poruka?>
+
+  <div class="grid-x grid-padding-x">
+    <div class="large-6 cell">
+        <a class="alert button expanded" 
+            href="<?=App::config('url')?>prodavac">Odustani</a>
+    </div>
+    <div class="large-6 cell">
+        <input type="submit" class="button expanded" value="Dodaj"></input>
+    </div>
+  </div>
+
+
+</form>
+
+

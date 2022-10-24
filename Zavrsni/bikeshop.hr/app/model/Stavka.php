@@ -39,4 +39,20 @@ class Stavka
         $izraz->execute();
         return $izraz->fetchAll(); // vraća indeksni niz objekata tipa stdClass
     }
+
+    public static function create($s)
+    {
+
+        $veza = DB::getInstance();
+        $izraz = $veza->prepare('
+        
+        insert into stavka
+            (bicikl,kolicina)
+            values
+            (:bicikl,:kolicina);
+        
+        ');
+        $izraz->execute($s);
+        return $veza->lastInsertId();
+    }
 }

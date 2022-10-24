@@ -11,8 +11,19 @@ class StavkaController extends AutorizacijaController
 
     public function index()
     {
-        $this->view->render($this->phtmlDir . 'read',[
+        $this->view->render($this->phtmlDir . 'index',[
             'stavka'=>Stavka::read()
         ]);
     }
+
+    public function nova()
+    {
+        $nova = Stavka::create([
+            'bicikl'=>'',
+            'kolicina'=>'1'
+        ]);
+        header('location: ' . App::config('url') 
+                . 'stavka/promjena/' . $nova);
+    }
+
 }

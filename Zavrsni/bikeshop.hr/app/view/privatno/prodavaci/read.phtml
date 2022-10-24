@@ -1,5 +1,5 @@
 <a href="<?=App::config('url')?>prodavac/novi"
-    class="success button expanded">Dodaj novi</a>
+    class="success button expanded">Dodaj prodavača</a>
 
 <table>
     <thead>
@@ -13,7 +13,7 @@
         </tr>
     </thead>
     <tbody>
-        <?php foreach($prodavaci as $p): ?>
+        <?php foreach($prodavac as $p): ?>
             <tr>
                 <td><?=$p->ime?></td>
                 <td><?=$p->prezime?></td>
@@ -25,7 +25,7 @@
                         <i style="color: blue;" 
                         class="step fi-pencil size-36"></i>
                     </a>
-                        <!-- Loš način --> &nbsp;&nbsp;<!-- bolji način CSS margin-right -->
+                    &nbsp;&nbsp;
                     <a href="<?=App::config('url')?>prodavac/brisanje/<?=$p->sifra?>">
                         <i style="color: red;" 
                         class="step fi-page-delete size-36"></i>
