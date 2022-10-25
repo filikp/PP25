@@ -1,24 +1,16 @@
 <form method="post" 
-action="<?=App::config('url')?>prodavac/promjena/<?=$prodavac->sifra?>">
-  <h4 class="text-center">Promjena prodavača</h4>
+action="<?=App::config('url')?>kupac/promjena/<?=$kupac->sifra?>">
+  <h4 class="text-center">Promjena kupca</h4>
   <label>Ime
-    <input type="text" name="ime" value="<?=$prodavac->ime?>" />
+    <input type="text" name="ime" value="<?=$kupac->ime?>" />
   </label>
 
   <label>Prezime
-    <input type="text" name="prezime" value="<?=$prodavac->prezime?>" />
+    <input type="text" name="prezime" value="<?=$kupac->prezime?>" />
   </label>
 
-  <label>email
-    <input type="text" name="email" value="<?=$prodavac->email?>" />
-  </label>
-
-  <label>OIB
-    <input type="number" name="OIB" value="<?=$prodavac->OIB?>" />
-  </label>
-
-  <label>IBAN
-    <input type="text" name="IBAN" value="<?=$prodavac->IBAN?>" />
+  <label>Mobitel
+    <input type="number" name="mobitel" value="<?=$kupac->mobitel?>" />
   </label>
 
   <?=$poruka?>
@@ -26,7 +18,7 @@ action="<?=App::config('url')?>prodavac/promjena/<?=$prodavac->sifra?>">
   <div class="grid-x grid-padding-x">
     <div class="large-6 cell">
         <a class="alert button expanded" 
-            href="<?=App::config('url')?>prodavac">Odustani</a>
+            href="<?=App::config('url')?>kupac">Odustani</a>
     </div>
     <div class="large-6 cell">
         <input type="submit" class="button expanded" value="Promijeni"></input>

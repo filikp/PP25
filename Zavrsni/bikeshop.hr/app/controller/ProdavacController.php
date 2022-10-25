@@ -100,6 +100,34 @@ class ProdavacController extends AutorizacijaController
         return $this->kontrolaIme() && $this->kontrolaPrezime();
     }
 
+    private function kontrolaPromjena()
+    {
+        return $this->kontrolaOIB() && $this->kontrolaIBAN() && $this->kontrolaIme() && $this->kontrolaPrezime();
+    }
+
+    private function kontrolaOIB()
+    {
+        $oib = (int)$this->prodavac->OIB;
+        if(strlen($oib)===11 || $oib==null){
+            return true;
+        }
+        $this->poruka = 'OIB mora imati 11 znamenki';
+        $this->prodavac->OIB=null;
+        return false;
+    }
+
+    private function kontrolaIBAN()
+    {
+        $iban = $this->prodavac->IBAN;
+        if(strlen($iban)==21 ||  $iban==null || (str_starts_with($iban, 'HR'))){ //još implementirati da provjerava jesu li znamenke
+            
+            return true;
+        }
+        $this->poruka = 'IBAN mora početi sa HR imati 19 znamenki';
+        $this->prodavac->IBAN=null;
+        return false;
+    }
+
     private function kontrolaIme()
     {
         $this->prodavac->ime=str_replace('&nbsp;',' ',$this->prodavac->ime);
@@ -119,33 +147,6 @@ class ProdavacController extends AutorizacijaController
        // Log::log($this->prodavac->prezime);
         if(strlen($this->prodavac->prezime)===0){
             $this->poruka = 'Prezime obavezno';
-            return false;
-        }
-        return true;
-    }
-
-    private function kontrolaPromjena()
-    {
-        return $this->kontrolaOIB() && $this->kontrolaIBAN();
-    }
-
-    private function kontrolaOIB()
-    {
-        $oib = (int)$this->prodavac->OIB;
-        if(strlen($oib)!=11){
-            $this->poruka = 'OIB mora imati 11 znamenki';
-            $this->prodavac->OIB=null;
-            return false;
-        }
-        return true;
-    }
-
-    private function kontrolaIBAN()
-    {
-        $iban = $this->prodavac->IBAN;
-        if(strlen($iban)!=21 || !(str_starts_with($iban, 'HR'))){ //još implementirati da provjerava jesu li znamenke
-            $this->poruka = 'IBAN mora početi sa HR imati 19 znamenki';
-            $this->prodavac->IBAN=null;
             return false;
         }
         return true;

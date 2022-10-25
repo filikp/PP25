@@ -17,6 +17,58 @@ class KupacController extends AutorizacijaController
         ]);
     }
 
+    public function promjena($sifra)
+    {
+        if(!isset($_POST['ime'])){
+
+            $kupac = Kupci::readOne($sifra);
+            if($kupac==null){
+                header('location: ' . App::config('url') . 'kupac');
+            }
+
+            $this->view->render($this->phtmlDir . 'update',[
+                'kupac' => $kupac,
+                'poruka' => 'Promijenite podatke'
+            ]);
+            return;
+        }
+
+        $this->kupac = (object) $_POST;
+        $this->kupac->sifra=$sifra;
+
+        if($this->kontrolaPromjena()){
+            Kupci::update((array)$this->kupac);
+            header('location: ' . App::config('url') . 'kupac');
+            return;
+        }
+
+        $this->view->render($this->phtmlDir . 'update',[
+            'kupac'=>$this->kupac,
+            'poruka'=>$this->poruka
+        ]);
+    }
+
+    public function brisanje($sifra)
+    {
+
+        $kupac = Kupci::readOne($sifra);
+        if($kupac==null){
+            header('location: ' . App::config('url') . 'kupac');
+        }
+
+        if(!isset($_POST['obrisi'])){
+            $this->view->render($this->phtmlDir . 'delete',[
+                'kupac' => $kupac,
+                'brisanje' => Kupci::brisanje($sifra),
+                'poruka' => 'Detalji kupca za brisanje'
+            ]);
+            return;
+        }
+
+        Kupci::delete($sifra);
+        header('location: ' . App::config('url') . 'kupac');
+    }
+
     public function novi()
     {
         if(!isset($_POST['ime'])){
@@ -69,6 +121,11 @@ class KupacController extends AutorizacijaController
             return false;
         }
         return true;
+    }
+
+    private function kontrolaPromjena()
+    {
+        return $this->kontrolaIme() && $this->kontrolaPrezime();
     }
 
     private function pripremiKupac()

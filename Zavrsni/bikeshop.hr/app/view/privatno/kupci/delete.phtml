@@ -1,24 +1,16 @@
 <form method="post" 
-action="<?=App::config('url')?>prodavac/brisanje/<?=$prodavac->sifra?>">
-  <h4 class="text-center">Brisanje prodavača</h4>
+action="<?=App::config('url')?>kupac/brisanje/<?=$kupac->sifra?>">
+  <h4 class="text-center">Brisanje kupca</h4>
   <label>Ime
-    <input disabled="disabled" type="text" name="ime" value="<?=$prodavac->ime?>" />
+    <input disabled="disabled" type="text" name="ime" value="<?=$kupac->ime?>" />
   </label>
 
   <label>Prezime
-    <input disabled="disabled" type="text" name="prezime" value="<?=$prodavac->prezime?>" />
+    <input disabled="disabled" type="text" name="prezime" value="<?=$kupac->prezime?>" />
   </label>
 
   <label>email
-    <input disabled="disabled" type="text" name="email" value="<?=$prodavac->email?>" />
-  </label>
-
-  <label>OIB
-    <input disabled="disabled" type="number" name="OIB" value="<?=$prodavac->OIB?>" />
-  </label>
-
-  <label>IBAN
-    <input disabled="disabled" type="text" name="IBAN" value="<?=$prodavac->IBAN?>" />
+    <input disabled="disabled" type="number" name="mobitel" value="<?=$kupac->mobitel?>" />
   </label>
 
   <?=$poruka?>
@@ -26,14 +18,14 @@ action="<?=App::config('url')?>prodavac/brisanje/<?=$prodavac->sifra?>">
   <div class="grid-x grid-padding-x">
     <div class="large-6 cell">
         <a class="alert button expanded" 
-            href="<?=App::config('url')?>prodavac">Odustani</a>
+            href="<?=App::config('url')?>kupac">Odustani</a>
     </div>
     <div class="large-6 cell">
     <?php if($brisanje): ?>
             <input type="hidden" name="obrisi" value="true" />
             <input type="submit" class="button expanded" value="Obriši" />
         <?php else: ?>
-            Prodavač se ne može obrisati
+            Kupac se ne može obrisati
         <?php endif; ?>
     </div>
   </div>
