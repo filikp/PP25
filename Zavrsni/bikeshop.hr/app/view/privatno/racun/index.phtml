@@ -28,21 +28,28 @@
                                 <h5>Količina</h5>
                                 <p><?= $r->kolicina ?></p>
                             </div>
+                            <div class="akcije" style="display: flex; flex-direction: column; align-items: center;">
+                                <div>
+                                    <h5>Akcija</h5>
+                                </div>
+                                <div>
+                                    <a href="<?= App::config('url') ?>racun/promjena/<?= $r->sifra ?>">
+                                        <i style="color: blue;" class="step fi-pencil size-36" title="Izmijeni"></i>
+                                    </a>
+                                    <?php if ($r->bicikli == 0) : ?>
+                                        <a href="<?= App::config('url') ?>racun/brisanje/<?= $r->sifra ?>">
+                                            <i style="color: red; margin-left: 5px;" class="step fi-page-delete size-36" title="Obriši račun"></i>
+                                        </a>
+                                    <?php else : ?>
+                                        <i style="color: gray; margin-left: 5px;" class="step fi-page-delete size-36" title="Ne može se obrisati"></i>
+                                    <?php endif; ?>
+                                </div>
+
+                            </div>
                         </div>
 
                     </div>
-                    <div style="display: flex; flex-direction: column; justify-content: space-around;">
-                        <div>
-                            <a href="<?= App::config('url') ?>racun/promjena/<?= $r->sifra ?>">
-                                <i style="color: blue; background-color: lightblue; border-radius: 3px; height: 90px; width: 30px; display: flex; justify-content: center; align-items: center;" class="step fi-pencil size-36"></i>
-                            </a>
-                        </div>
-                        <div>
-                            <a href="<?= App::config('url') ?>racun/brisanje/<?= $r->sifra ?>">
-                                <i style="color: red; background-color: orange; border-radius: 3px; height: 90px; width: 30px; display: flex; justify-content: center; align-items: center;" class="step fi-page-delete size-36"></i>
-                            </a>
-                        </div>
-                    </div>
+
                 </div>
                 <div class="ukupnaCijena">
                     <div>

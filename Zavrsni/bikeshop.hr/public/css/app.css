@@ -1,5 +1,9 @@
 body{
     background-color: blanchedalmond;
+    min-height: 100vh;
+    margin: 0;
+    margin-left: 100px;
+    margin-right: 100px;
 }
 
 #program{
@@ -13,7 +17,7 @@ body{
 }
 
 .podnozje{
-    position: inherit;
+    position: fixed;
     bottom: 0;
     width: 100%; 
     text-align: center;
@@ -78,8 +82,60 @@ a:active{
     font-size: 24px;
     border-radius: 50px;
     margin-right: 10px;
-    margin-left: 3px;
+    margin-left: 2px;
     border: solid;
     border-width: 2px;
     border-color: rgba(3, 112, 3, 0.384);
+}
+
+.pocetna{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+    background-color: pink;
+}
+
+.akcijaUrediRacun{
+    color: blue; 
+    background-color: lightblue; 
+    border-radius: 20px; 
+    height: 90px; 
+    width: 40px; 
+    display: flex; 
+    justify-content: center; 
+    align-items: center;
+}
+
+.akcijaUrediBrisanje{
+    color: red; 
+    background-color: orange; 
+    border-radius: 20px; 
+    height: 90px; 
+    width: 40px; 
+    display: flex; 
+    justify-content: center; 
+    align-items: center;
+}
+
+.akcijaUrediBrisanjeNo{
+    color: gray; 
+    background-color: rgba(60, 21, 0, 0.668); 
+    border-radius: 20px; 
+    height: 90px; 
+    width: 40px; 
+    display: flex; 
+    justify-content: center; 
+    align-items: center;
+}
+
+.akcije:a{
+    color: gray; 
+    background-color: rgba(188, 97, 41, 0.293); 
+    border-radius: 20px; 
+    height: 90px; 
+    width: 40px; 
+    display: flex; 
+    justify-content: center; 
+    align-items: center;
 }
