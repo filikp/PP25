@@ -1,41 +1,60 @@
-<a href="<?=App::config('url')?>racun/novi"
-    class="success button expanded">Dodaj novi</a>
+<a href="<?= App::config('url') ?>racun/novi" class="success button expanded">Dodaj novi</a>
 
 
 <div class="grid-x grid-padding-x">
-    <?php foreach($racun as $r):?>
-        <div class="large-12 cell">
-            <div class="callout" style="display: flex; justify-content: space-between;">
-                <div style="display: flex; align-items: center; justify-content: center; width: 15rem; margin-right: 2rem;">
-                slika
+    <?php foreach ($racun as $r) : ?>
+        <div class="large-12 cell callout">
+            <div>
+                <div style="display: flex; justify-content: space-between;">
+                    <div style="display: flex; align-items: center; justify-content: center; width: 15rem; margin-right: 2rem;">
+                        slika
+                    </div>
+                    <div style="flex: 0.9;">
+                        <div style="display: flex; justify-content: space-between;">
+                            <div style="display: flex; flex-direction: column; align-items: center;">
+                                <h5>Bicikl</h5>
+                                <p><?= $r->bicikl; ?>
+                                    <?php if ($r->elektricni) : ?>
+                                        <i style="color: green;" class="step fi-battery-full size-36"></i>
+                                    <?php endif; ?>
+                                </p>
+                            </div>
+                            <div style="display: flex; flex-direction: column; align-items: center;">
+                                <h5>Cijena</h5>
+                                <p><?= $r->cijena_kn ?> kn <br>
+                                    (<?= round($r->cijena_kn / 7.5345, 2) ?> €)</p>
+                            </div>
+                            <div style="display: flex; flex-direction: column; align-items: center;">
+                                <h5>Količina</h5>
+                                <p><?= $r->kolicina ?></p>
+                            </div>
+                        </div>
+
+                    </div>
+                    <div style="display: flex; flex-direction: column; justify-content: space-around;">
+                        <div>
+                            <a href="<?= App::config('url') ?>racun/promjena/<?= $r->sifra ?>">
+                                <i style="color: blue; background-color: lightblue; border-radius: 3px; height: 90px; width: 30px; display: flex; justify-content: center; align-items: center;" class="step fi-pencil size-36"></i>
+                            </a>
+                        </div>
+                        <div>
+                            <a href="<?= App::config('url') ?>racun/brisanje/<?= $r->sifra ?>">
+                                <i style="color: red; background-color: orange; border-radius: 3px; height: 90px; width: 30px; display: flex; justify-content: center; align-items: center;" class="step fi-page-delete size-36"></i>
+                            </a>
+                        </div>
+                    </div>
                 </div>
-                <div style="flex: 1;">
-                    <div style="display: flex; justify-content: space-between;">
-                        <div style="display: flex; flex-direction: column; align-items: center;">
-                            <h5>Bicikl</h5>
-                            <p><?=$r->proizvodac?></p>
-                        </div>
-                        <div style="display: flex; flex-direction: column; align-items: center;">
-                            <h5>Količina</h5>
-                            <p><?=$r->kolicina?></p>
-                        </div>
-                        <div style="display: flex; flex-direction: column; align-items: center;">
-                            <h5>Cijena (1)</h5>
-                            <p><?=$r->cijena_kn?> kn <br>
-                            (<?=round($r->cijena_kn/7.5345, 2)?> €)</p>
-                        </div>
-                        <div style="display: flex; flex-direction: column; align-items: center;">
-                            <h5>Ukupna cijena</h5>
-                            <p><?=$r->cijena_kn*$r->kolicina?> kn <br>
-                            (<?=round($r->cijena_kn*$r->kolicina/7.5345, 2)?> €)</p>
-                        </div>
+                <div class="ukupnaCijena">
+                    <div>
+                        <p>Prodavač: <?= $r->prodavac ?><br>
+                            Kupac: <?= $r->kupac ?><br>
+                            Vrijeme kupnje: <?= $r->vrijeme_kupnje ?></p>
                     </div>
-                    <div style="display: flex; flex-direction: column; align-items: flex-end; text-align: end; margin-top: 2rem;">
-                        <p>Prodavač: <?=$r->prodavac?><br>
-                        Kupac: <?=$r->kupac?><br>
-                        Vrijeme kupnje: <?=$r->vrijeme_kupnje?></p>
+                    <div>
+                        <h5>Ukupna cijena</h5>
+                        <p><?= $r->cijena_kn * $r->kolicina ?> kn <br>
+                            (<?= round($r->cijena_kn * $r->kolicina / 7.5345, 2) ?> €)</p>
                     </div>
-                    
                 </div>
             </div>
         </div>

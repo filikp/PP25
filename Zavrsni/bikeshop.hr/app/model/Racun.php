@@ -60,17 +60,20 @@ class Racun
         $veza = DB::getInstance();
         $izraz = $veza->prepare('
         
-        select c.sifra, a.proizvodac, a.cijena_kn, a.namjena, a.elektricni, b.kolicina, c.vrijeme_kupnje, 
-        concat(d.ime, \' \', d.prezime) as prodavac, concat(e.ime, \' \', e.prezime) as kupac, count(b.racun)
-        from bicikl a inner join stavka b 
-        on a.sifra = b.bicikl 
-        left join racun c 
-        on c.sifra = b.racun
-        left join prodavac d 
-        on d.sifra = c.prodavac 
-        left join kupac e 
-        on e.sifra = c.kupac
-        group by c.sifra, a.proizvodac, a.cijena_kn, a.namjena, a.elektricni, b.kolicina, c.vrijeme_kupnje
+        select a.sifra, a.vrijeme_kupnje, concat(b.ime, \' \', b.prezime) as prodavac, e.kolicina, d.elektricni,
+        d.cijena_kn,
+		concat(c.ime, \' \', c.prezime) as kupac, concat(d.proizvodac, \' (\', d.namjena,\')\') as bicikl,
+		count(e.bicikl) as bicikli
+        from racun a inner join prodavac b 
+        on a.prodavac = b.sifra 
+        left join kupac c  
+        on a.kupac = c.sifra
+        left join stavka e  
+        on a.sifra = e.racun 
+        left join bicikl d 
+        on d.sifra = e.bicikl
+        group by a.sifra, a.vrijeme_kupnje, concat(b.ime, \' \', b.prezime), 
+		concat(c.ime, \' \', c.prezime), concat(d.proizvodac, \' \', d.namjena);
 
 
         

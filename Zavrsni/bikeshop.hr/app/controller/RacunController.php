@@ -29,8 +29,8 @@ class RacunController extends AutorizacijaController
     {
         $novi = Racun::create([
             'vrijeme_kupnje'=>'',
-            'prodavac'=>'',
-            'kupac'=>''
+            'prodavac'=>1,
+            'kupac'=>1
         ]);
         header('location: ' . App::config('url') 
                 . 'racun/promjena/' . $novi);
@@ -75,7 +75,7 @@ class RacunController extends AutorizacijaController
             return;
         }
         
-        $this->detalji($this->entitet, $prodavaci, $kupaci, $this->poruka);
+        $this->detalji($this->entitet, $prodavaci, $kupci, $this->poruka);
  
     }
 
@@ -103,7 +103,7 @@ class RacunController extends AutorizacijaController
         $p = new stdClass();
         $p->sifra=0;
         $p->ime='Odaberi Prodavaca';
-        $prodavac[]=$p;
+        $prodavaci[]=$p;
         foreach(Prodavac::read() as $prodavac){
             $prodavaci[]=$prodavac;
         }
@@ -116,11 +116,17 @@ class RacunController extends AutorizacijaController
         $k = new stdClass();
         $k->sifra=0;
         $k->ime='Odaberi kupca';
+        $k->prezime='';
         $kupci[]=$k;
-        foreach(Kupac::read() as $kupac){
+        foreach(Kupci::read() as $kupac){
             $kupci[]=$kupac;
         }
         return $kupci;
+    }
+
+    private function ucitajBicikle()
+    {
+
     }
 
     public function dodajBicikl()
@@ -128,7 +134,7 @@ class RacunController extends AutorizacijaController
         if(!isset($_GET['racun']) || !isset($_GET['bicikl'])){
             return;
         }
-        Racun::dodajBicikl($_GET['racun'],$_GET['bicikl']);
+        Racun::dodajBicikl($_GET['bicikl'], $_GET['kolicina'], $_GET['racun']);
     }
 
     public function obrisiBicikl()
@@ -137,5 +143,24 @@ class RacunController extends AutorizacijaController
             return;
         }
         Racun::obrisiBicikl($_GET['racun'],$_GET['bicikl']);
+    }
+
+    public function brisanje($sifra)
+    {
+        Racun::delete($sifra);
+        header('location: ' . App::config('url') . 'racun');
+    }
+
+    private function kontrola()
+    {
+        return $this->kontrolaBicikl();
+    }
+
+    private function kontrolaBicikl(){
+        if($this->entitet->bicikl==0){
+            $this->poruka='Obavezno bicikl';
+            return false;
+        }
+        return true;
     }
 }

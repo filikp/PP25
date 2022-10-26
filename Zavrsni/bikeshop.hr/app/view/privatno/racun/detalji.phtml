@@ -1,27 +1,58 @@
 <form method="post" 
-action="<?=App::config('url')?>stavka/promjena/<?=$e->sifra?>">
-  <h4 class="text-center">Detalji košarice</h4>
+action="<?=App::config('url')?>racun/promjena/<?=$e->sifra?>">
+  <h4 class="text-center">Detalji računa</h4>
   
+<label for="bicikl">Bicikl</label>
+<select name="bicikl" id="bicikl">
+    <?php foreach($bicikli as $b): ?>
+        <option
+        <?php if ($e->bicikl==$b->sifra){
+            echo ' selected="selected"';
+        }
+        ?>
+        value="<?=$b->sifra?>"><?=$b->proizvodac?></option>
+    <?php endforeach; ?>
+</select>
+
+<label>Količina
+    <input type="number" name="kolicina" value="<?=$e->kolicina?>" />
+</label>
   
-  <label>Proizvođač
-    <input type="text" name="prezime" value="<?=$e->proizvodac?>" />
-  </label>
+<label for="vrijeme_kupnje">Datum kupnje</label>
+  <input type="date" name="vrijeme_kupnje" id="vrijeme_kupnje" 
+value="<?=$e->vrijeme_kupnje?>" lang="hr-HR">
 
-  <label>Cijena
-    <input type="text" name="ime" value="<?=$e->cijena_kn?>" />
-  </label>
+  <label for="prodavac">Prodavač</label>
+<select name="prodavac" id="prodavac">
+    <?php foreach($prodavaci as $p): ?>
+        <option
+        <?php if ($e->prodavac==$p->sifra){
+            echo 'selected="selected"';
+        }
+        ?>
+        value="<?=$p->sifra?>"><?=$p->ime?> <?=$p->prezime?></option>
+    <?php endforeach; ?>
+</select>
 
 
-  <label>Količina
-    <input type="email" name="email" value="<?=$e->kolicina?>" />
-  </label>
+<label for="kupac">Kupac</label>
+<select name="kupac" id="kupac">
+    <?php foreach($kupci as $k): ?>
+        <option
+        <?php if ($e->kupac==$k->sifra){
+            echo ' selected="selected"';
+        }
+        ?>
+        value="<?=$k->sifra?>"><?=$k->ime?> <?=$k->prezime?></option>
+    <?php endforeach; ?>
+</select>
 
   <?=$poruka?>
 
   <div class="grid-x grid-padding-x">
     <div class="large-6 cell">
         <a class="alert button expanded" 
-            href="<?=App::config('url')?>stavka">Odustani</a>
+            href="<?=App::config('url')?>racun">Odustani</a>
     </div>
     <div class="large-6 cell">
         <input type="submit" class="button expanded" value="Spremi"></input>
