@@ -4,16 +4,16 @@ action="<?=App::config('url')?>stavka/promjena/<?=$e->sifra?>">
   
   
   <label>Proizvođač
-    <input type="text" name="prezime" value="<?=$e->proizvodac?>" />
+    <input type="text" name="proizvodac" value="<?=$e->proizvodac?>" />
   </label>
 
   <label>Cijena
-    <input type="text" name="ime" value="<?=$e->cijena_kn?>" />
+    <input type="text" name="cijena_kn" value="<?=$e->cijena_kn?>" />
   </label>
 
 
   <label>Količina
-    <input type="email" name="email" value="<?=$e->kolicina?>" />
+    <input type="number" name="kolicina" value="<?=$e->kolicina?>" />
   </label>
 
   <?=$poruka?>

@@ -38,7 +38,11 @@ class Bicikl
         $veza = DB::getInstance();
         $izraz = $veza->prepare('
         
-            select * from bicikl order by proizvodac
+            select a.sifra, a.proizvodac, a.namjena, a.elektricni, a.broj_brzina, a.velicina_cm, a.cijena_kn, count(b.sifra) as racuna 
+            from bicikl a left join stavka b
+            on a.sifra = b.bicikl
+            group by a.sifra, a.proizvodac, a.namjena, a.elektricni, a.broj_brzina, a.velicina_cm, a.cijena_kn
+            order by 1,2;
         
         ');
         $izraz->execute(); // OVO MORA BITI OBAVEZNO
@@ -56,7 +60,14 @@ class Bicikl
         values (:proizvodac, :namjena, :elektricni, :broj_brzina, :velicina_cm, :cijena_kn)
         
         ');
-        $izraz->execute($bicikl);
+        $izraz->execute([
+            'proizvodac'=>$bicikl['proizvodac'],
+            'namjena'=>$bicikl['namjena'],
+            'elektricni'=>$bicikl['elektricni'],
+            'broj_brzina'=>$bicikl['broj_brzina'],
+            'velicina_cm'=>$bicikl['velicina_cm'],
+            'cijena_kn'=>$bicikl['cijena_kn'],
+        ]);
     }
 
     // CRUD - U

@@ -2,6 +2,22 @@
 
 class Kupci
 {
+
+    public static function brisanje($sifra)
+    {
+        $veza = DB::getInstance();
+        $izraz = $veza->prepare('
+        
+            select count(*) from racun where kupac=:sifra
+        
+        ');
+        $izraz->execute([
+            'sifra'=>$sifra
+        ]);
+        $ukupno = $izraz->fetchColumn();
+        return $ukupno==0; 
+    }
+
     public static function readOne($sifra)
     {
         $veza = DB::getInstance();
@@ -22,26 +38,15 @@ class Kupci
         $veza = DB::getInstance();
         $izraz = $veza->prepare('
         
-            select * from kupac order by prezime
-        
+        select a.sifra, a.ime, a.prezime, a.mobitel,  count(b.sifra) as racuna
+        from kupac a left join racun b 
+        on a.sifra = b.kupac
+        group by a.sifra, a.ime, a.prezime, a.mobitel
+        order by 1,2;
+            
         ');
         $izraz->execute();
         return $izraz->fetchAll();
-    }
-
-    public static function brisanje($sifra)
-    {
-        $veza = DB::getInstance();
-        $izraz = $veza->prepare('
-        
-            select count(*) from racun where kupac=:sifra
-        
-        ');
-        $izraz->execute([
-            'sifra'=>$sifra
-        ]);
-        $ukupno = $izraz->fetchColumn();
-        return $ukupno==0; 
     }
 
     public static function create($kupac)

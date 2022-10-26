@@ -33,18 +33,18 @@ create table kupac (
 create table stavka (
     sifra int not null primary key auto_increment,
     bicikl int not null,
-    kolicina int
+    kolicina int,
+    racun int not null
 );
 
 create table racun (
     sifra int not null primary key auto_increment,
     vrijeme_kupnje datetime,
     prodavac int not null,
-    kupac int not null,
-    stavka int not null
+    kupac int not null
 );
 
-alter table racun add foreign key (stavka) references stavka(sifra);
+alter table stavka add foreign key (racun) references racun(sifra);
 alter table stavka add foreign key (bicikl) references bicikl(sifra);
 alter table racun add foreign key (prodavac) references prodavac(sifra);
 alter table racun add foreign key (kupac) references kupac(sifra);
@@ -67,19 +67,19 @@ values 	('Filip', 'Kovač', '0912345678'),
 		('Ivan', 'Horvat', '0992387766'),
 		('Zvonimir', 'Scitovski', '0951185523');
 
-insert into stavka (bicikl, kolicina)
-values 	(6, 1),
-		(2, 3),
-		(3, 1),
-		(5, 10),
-		(4, 1);
-	
-insert into racun (vrijeme_kupnje, prodavac, kupac, stavka)
-values 	('2022-05-24', 1, 1, 2),
-		('2022-03-11', 1, 2, 1),
-		('2021-11-21', 2, 3, 3),
-		('2022-06-03', 3, 1, 5),
-		('2020-11-01', 2, 2, 4);
+insert into racun (vrijeme_kupnje, prodavac, kupac)
+values 	('2022-05-24', 1, 1),
+		('2022-03-11', 1, 2),
+		('2021-11-21', 2, 3),
+		('2022-06-03', 3, 1),
+		('2020-11-01', 2, 2);
+
+insert into stavka (bicikl, kolicina, racun)
+values 	(6, 1, 1),
+		(2, 3, 1),
+		(3, 1, 2),
+		(5, 10, 3),
+		(4, 1, 4);
 
 # Ispis imena i prezimena kupca, proizvođača bicikla, cijene, količine, ukupne cijene te vrijeme kupnje
 -- select d.ime, d.prezime, a.proizvodac as bicikl, a.cijena_kn, b.kolicina, (b.kolicina*a.cijena_kn) as ukupna_cijena, c.vrijeme_kupnje  

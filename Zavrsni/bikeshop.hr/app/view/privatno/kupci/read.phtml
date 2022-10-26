@@ -22,10 +22,15 @@
                         class="step fi-pencil size-36"></i>
                     </a>
                         <!-- Loš način --> &nbsp;&nbsp;<!-- bolji način CSS margin-right -->
+                    <?php if($k->racuna==0): ?>
                     <a href="<?=App::config('url')?>kupac/brisanje/<?=$k->sifra?>">
-                        <i style="color: red;" 
+                        <i style="color: red;" title="Obriši kupca" 
                         class="step fi-page-delete size-36"></i>
                      </a>
+                    <?php else: ?>
+                        <i style="color: gray;" title="Kupac se ne može obrisati jer se nalazi na nekom računu"
+                        class="step fi-page-delete size-36"></i>
+                    <?php endif; ?>
                 </td>
             </tr>
         <?php endforeach;?>
