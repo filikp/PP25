@@ -54,8 +54,8 @@ create table kupac (
 create table stavka (
     sifra int not null primary key auto_increment,
     bicikl int not null,
-    kolicina int,
-    racun int not null
+    kolicina int not null,
+    racun int
 );
 
 create table racun (
@@ -97,10 +97,11 @@ values 	('2022-05-24', 1, 1),
 
 insert into stavka (bicikl, kolicina, racun)
 values 	(6, 1, 1),
-		(2, 3, 1),
+		(2, 3, 2),
 		(3, 1, 2),
 		(5, 10, 3),
 		(4, 1, 4);
+
 
 # Ispis imena i prezimena kupca, proizvođača bicikla, cijene, količine, ukupne cijene te vrijeme kupnje
 -- select d.ime, d.prezime, a.proizvodac as bicikl, a.cijena_kn, b.kolicina, (b.kolicina*a.cijena_kn) as ukupna_cijena, c.vrijeme_kupnje  

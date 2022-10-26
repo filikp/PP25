@@ -33,8 +33,8 @@ create table kupac (
 create table stavka (
     sifra int not null primary key auto_increment,
     bicikl int not null,
-    kolicina int,
-    racun int not null
+    kolicina int not null,
+    racun int
 );
 
 create table racun (
@@ -53,7 +53,7 @@ insert into bicikl (proizvodac, namjena, elektricni, broj_brzina, velicina_cm, c
 values	('Trek', 'MTB', false, 30, 48, 7999),
 		('Trek', 'Cestovni', false, 27, 43, 5499),
 		('Giant', 'MTB', false, 20, 51, 9899),
-		('Scott', 'Trkači', false, 30, 53.5, 13699),
+		('Scott', 'Trkači', false, 30, 53, 13699),
 		('Nakamura', 'Cestovni', false, 27, 38, 3599),
 		('Trek', 'MTB', true, 11, 48, 45199);
 
@@ -66,7 +66,7 @@ insert into kupac (ime, prezime, mobitel)
 values 	('Filip', 'Kovač', '0912345678'),
 		('Ivan', 'Horvat', '0992387766'),
 		('Zvonimir', 'Scitovski', '0951185523');
-
+	
 insert into racun (vrijeme_kupnje, prodavac, kupac)
 values 	('2022-05-24', 1, 1),
 		('2022-03-11', 1, 2),
@@ -76,7 +76,7 @@ values 	('2022-05-24', 1, 1),
 
 insert into stavka (bicikl, kolicina, racun)
 values 	(6, 1, 1),
-		(2, 3, 1),
+		(2, 3, 2),
 		(3, 1, 2),
 		(5, 10, 3),
 		(4, 1, 4);
