@@ -38,7 +38,11 @@ class Prodavac
         $veza = DB::getInstance();
         $izraz = $veza->prepare('
         
-            select * from prodavac order by prezime
+            select a.sifra, a.ime, a.prezime, a.email, a.OIB, a.IBAN,  count(b.sifra) as racuna
+            from prodavac a left join racun b 
+            on a.sifra = b.prodavac
+            group by a.sifra, a.ime, a.prezime, a.email, a.OIB, a.IBAN
+            order by 1,2;
         
         ');
         $izraz->execute(); // OVO MORA BITI OBAVEZNO

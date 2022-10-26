@@ -26,10 +26,15 @@
                         class="step fi-pencil size-36"></i>
                     </a>
                     &nbsp;&nbsp;
+                    <?php if($p->racuna==0): ?>
                     <a href="<?=App::config('url')?>prodavac/brisanje/<?=$p->sifra?>">
                         <i style="color: red;" 
                         class="step fi-page-delete size-36"></i>
                      </a>
+                     <?php else: ?>
+                        <i style="color: gray;" title="Prodavač se ne može obrisati jer se nalazi na nekom računu"
+                        class="step fi-page-delete size-36"></i>
+                    <?php endif; ?>
                 </td>
             </tr>
         <?php endforeach;?>
