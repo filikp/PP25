@@ -21,6 +21,7 @@ body{
     bottom: 0;
     width: 100%; 
     text-align: center;
+    padding-right: 200px;
 }
 
 .fi-page-delete, .fi-pencil, .fi-x, .fi-battery-full{
@@ -83,8 +84,8 @@ a:active{
     border-radius: 50px;
     margin-right: 10px;
     margin-left: 2px;
-    border: solid;
-    border-width: 2px;
+    border: dashed;
+    border-width: 3px;
     border-color: rgba(3, 112, 3, 0.384);
 }
 
@@ -93,7 +94,14 @@ a:active{
     justify-content: center;
     align-items: center;
     height: 100%;
-    background-color: pink;
+    font-size: 100px;
+    border-style: dashed;
+    border-width: 10px;
+    border-radius: 100px;
+    margin-top: 10%;
+    box-shadow: 1px, 1px, 20px, black;
+    background-color: rgb(222, 217, 175);
+    border-color: rgba(31, 36, 32, 0.727);
 }
 
 .akcijaUrediRacun{
