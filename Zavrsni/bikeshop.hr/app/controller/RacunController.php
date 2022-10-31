@@ -135,6 +135,7 @@ class RacunController extends AutorizacijaController
         $b->sifra=0;
         $b->proizvodac='Odaberi ';
         $b->namjena='bicikl';
+        $b->cijena_kn='';
         $bicikli[]=$b;
         foreach(Bicikl::read() as $bicikl){
             $bicikli[]=$bicikl;

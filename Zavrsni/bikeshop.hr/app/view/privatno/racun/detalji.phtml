@@ -10,7 +10,10 @@ action="<?=App::config('url')?>racun/promjena/<?=$e->sifra?>">
             echo ' selected="selected"';
         }
         ?>
-        value="<?=$b->sifra?>"><?=$b->proizvodac?> <?=$b->namjena?></option>
+        value="<?=$b->sifra?>"><?=$b->proizvodac?> <?=$b->namjena?>
+            <?php if($b->cijena_kn!=''){
+                echo ' - ' . ($b->cijena_kn) . 'kn ' . '(' . round(($b->cijena_kn)/7.5345,2) . '€)';
+            }  ?></option>
     <?php endforeach; ?>
 </select>
 
