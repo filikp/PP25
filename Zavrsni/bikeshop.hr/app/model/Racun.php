@@ -93,7 +93,11 @@ class Racun
             (:vrijeme_kupnje, :prodavac, :kupac);
         ');
 
-        $izraz->execute($p);
+        $izraz->execute([
+            'vrijeme_kupnje'=>$p['vrijeme_kupnje'],
+            'prodavac'=>$p['prodavac'],
+            'kupac'=>$p['kupac']
+        ]);
         return $veza->lastInsertId();
     }
 
@@ -141,17 +145,19 @@ class Racun
         ]);
     }
 
-    public static function obrisiBicikl($racun,$bicikl)
+    public static function obrisiBicikl($bicikl, $kolicina, $racun)
     {
         $veza = DB::getInstance();
         $izraz = $veza->prepare('
         
           delete from stavka where bicikl=:bicikl 
+          and kolicina=:kolicina
           and racun=:racun
         
         ');
         $izraz->execute([
             'bicikl'=>$bicikl,
+            'kolicina'=>$kolicina,
             'racun'=>$racun
         ]);
     }

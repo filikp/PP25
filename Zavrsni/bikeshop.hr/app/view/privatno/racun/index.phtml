@@ -1,4 +1,4 @@
-<a href="<?= App::config('url') ?>racun/novi" class="success button expanded">Dodaj novi</a>
+<a href="<?= App::config('url') ?>racun/novi" class="success button expanded">Kupi bicikl</a>
 
 
 <div class="grid-x grid-padding-x">
@@ -7,7 +7,10 @@
             <div>
                 <div style="display: flex; justify-content: space-between;">
                     <div style="display: flex; align-items: center; justify-content: center; width: 15rem; margin-right: 2rem;">
-                        slika
+                        <div class="text-center" style="width: 80px;">
+                            <h4>Račun</h4>
+                            <img src="/public/img/bikeshop_logo.png" alt="">
+                        </div>
                     </div>
                     <div style="flex: 0.9;">
                         <div style="display: flex; justify-content: space-between;">
@@ -36,13 +39,14 @@
                                     <a href="<?= App::config('url') ?>racun/promjena/<?= $r->sifra ?>">
                                         <i style="color: blue;" class="step fi-pencil size-36" title="Izmijeni"></i>
                                     </a>
-                                    <?php if ($r->bicikli == 0) : ?>
-                                        <a href="<?= App::config('url') ?>racun/brisanje/<?= $r->sifra ?>">
+                                    <?php //if ($r->bicikli == 0) : ?>
+                                        <a onclick="return confirm('Sigurno želite obrisati ovaj račun?');"
+                                            href="<?= App::config('url') ?>racun/brisanje/<?= $r->sifra ?>">
                                             <i style="color: red; margin-left: 5px;" class="step fi-page-delete size-36" title="Obriši račun"></i>
                                         </a>
-                                    <?php else : ?>
-                                        <i style="color: gray; margin-left: 5px;" class="step fi-page-delete size-36" title="Ne može se obrisati"></i>
-                                    <?php endif; ?>
+                                    <?php //else : ?>
+                                        <!-- <i style="color: gray; margin-left: 5px;" class="step fi-page-delete size-36" title="Ne može se obrisati"></i> -->
+                                    <?php //endif; ?>
                                 </div>
 
                             </div>

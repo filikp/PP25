@@ -97,7 +97,7 @@ class ProdavacController extends AutorizacijaController
 
     private function kontrolaNovi()
     {
-        return $this->kontrolaIme() && $this->kontrolaPrezime();
+        return $this->kontrolaIme() && $this->kontrolaPrezime() && $this->kontrolaOIB() && $this->kontrolaIBAN();
     }
 
     private function kontrolaPromjena()
@@ -112,19 +112,19 @@ class ProdavacController extends AutorizacijaController
             return true;
         }
         $this->poruka = 'OIB mora imati 11 znamenki';
-        $this->prodavac->OIB=null;
+        $this->prodavac->OIB=$oib;
         return false;
     }
 
     private function kontrolaIBAN()
     {
         $iban = $this->prodavac->IBAN;
-        if(strlen($iban)==21 ||  $iban==null || (str_starts_with($iban, 'HR'))){ //još implementirati da provjerava jesu li znamenke
-            
+        if(strlen($iban)==21 || $iban==null){
             return true;
         }
-        $this->poruka = 'IBAN mora početi sa HR imati 19 znamenki';
-        $this->prodavac->IBAN=null;
+        //$this->poruka = 'IBAN mora početi sa HR i imati 19 znamenki';
+        $this->poruka = 'IBAN mora imati 21 znak';
+        $this->prodavac->IBAN=$iban;
         return false;
     }
 

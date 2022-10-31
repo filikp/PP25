@@ -1,7 +1,3 @@
-<form method="post" 
-action="<?=App::config('url')?>racun/promjena/<?=$e->sifra?>">
-  <h4 class="text-center">Detalji računa</h4>
-  
 <label for="bicikl">Bicikl</label>
 <select name="bicikl" id="bicikl">
     <?php foreach($bicikli as $b): ?>
@@ -10,17 +6,17 @@ action="<?=App::config('url')?>racun/promjena/<?=$e->sifra?>">
             echo ' selected="selected"';
         }
         ?>
-        value="<?=$b->sifra?>"><?=$b->proizvodac?> <?=$b->namjena?></option>
+        value="<?=$b->sifra?>"><?=$b->proizvodac?></option>
     <?php endforeach; ?>
 </select>
 
 <label>Količina
-    <input type="number" name="kolicina" value="<?=$e->kolicina?>" />
+    <input type="number" name="kolicina" value="<?=$kolicina?>" />
 </label>
   
 <label for="vrijeme_kupnje">Datum kupnje</label>
   <input type="date" name="vrijeme_kupnje" id="vrijeme_kupnje" 
-value="<?=$e->vrijeme_kupnje?>" lang="hr-HR">
+value="<?=$vrijeme_kupnje?>" lang="hr-HR">
 
   <label for="prodavac">Prodavač</label>
 <select name="prodavac" id="prodavac">
@@ -46,20 +42,3 @@ value="<?=$e->vrijeme_kupnje?>" lang="hr-HR">
         value="<?=$k->sifra?>"><?=$k->ime?> <?=$k->prezime?></option>
     <?php endforeach; ?>
 </select>
-
-  <?=$poruka?>
-
-  <div class="grid-x grid-padding-x">
-    <div class="large-6 cell">
-        <a class="alert button expanded" 
-            href="<?=App::config('url')?>racun">Odustani</a>
-    </div>
-    <div class="large-6 cell">
-        <input type="submit" class="button expanded" value="Spremi"></input>
-    </div>
-  </div>
-
-
-</form>
-
-

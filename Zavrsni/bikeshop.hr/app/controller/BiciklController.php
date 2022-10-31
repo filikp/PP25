@@ -110,12 +110,12 @@ class BiciklController extends AutorizacijaController
 
     private function kontrolaNovi()
     {
-        return $this->kontrolaProizvodac() && $this->kontrolaCijena();
+        return $this->kontrolaProizvodac() && $this->kontrolaBrzine()  && $this->kontrolaVelicina() && $this->kontrolaCijena();
     }
 
     private function kontrolaPromjena()
     {
-        return $this->kontrolaProizvodac();
+        return $this->kontrolaProizvodac() && $this->kontrolaBrzine()  && $this->kontrolaVelicina() && $this->kontrolaCijena();
     }
 
     private function kontrolaProizvodac()
@@ -135,8 +135,30 @@ class BiciklController extends AutorizacijaController
     {
         $broj = (float)$this->bicikl->cijena_kn;
         if($broj<=0){
-            $this->poruka='Cijena mora biti broj veći od nule (0)';
-            $this->bicikl->cijena_kn=0;
+            $this->poruka='Cijena mora biti veća od nule';
+            $this->bicikl->cijena_kn=$broj;
+            return false;
+        }
+        return true;
+    }
+
+    private function kontrolaVelicina()
+    {
+        $broj = (float)$this->bicikl->velicina_cm;
+        if($broj<=0){
+            $this->poruka='Veličina mora biti veća od nule';
+            $this->bicikl->velicina_cm=$broj;
+            return false;
+        }
+        return true;
+    }
+
+    private function kontrolaBrzine()
+    {
+        $broj = (float)$this->bicikl->broj_brzina;
+        if($broj<=0){
+            $this->poruka='Broj brzina mora biti veća od nule';
+            $this->bicikl->broj_brzina=$broj;
             return false;
         }
         return true;

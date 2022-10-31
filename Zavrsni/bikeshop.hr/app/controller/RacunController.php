@@ -28,6 +28,8 @@ class RacunController extends AutorizacijaController
     public function novi()
     {
         $novi = Racun::create([
+            'bicikli' => '',
+            'kolicina'=>'',
             'vrijeme_kupnje'=>'',
             'prodavac'=>1,
             'kupac'=>1
@@ -40,22 +42,22 @@ class RacunController extends AutorizacijaController
     {
         $prodavaci=$this->ucitajProdavace();
         $kupci=$this->ucitajKupce();
+        $bicikli=$this->ucitajBicikle();
 
         if(!isset($_POST['ime'])){
 
             $e = Racun::readOne($sifra);
-            //Log::log($e);
-            // if($e->vrijeme_kupnje!=null){
-            //     $e->vrijeme_kupnje = date('Y-m-d',
-            //     strtotime($e->vrijeme_kupnje));
-            // }else{
-            //     $e->vrijeme_kupnje = '';
-            // }
+            if($e->vrijeme_kupnje!=null){
+                $e->vrijeme_kupnje = date('Y-m-d',
+                strtotime($e->vrijeme_kupnje));
+            }else{
+                $e->vrijeme_kupnje = '';
+            }
             if($e==null){
                 header('location: ' . App::config('url') . 'racun');
             }
            
-            $this->detalji($e, $prodavaci, $kupci ,'Unesite podatke');
+            $this->detalji($e, $prodavaci, $kupci , $bicikli, 'Unesite podatke');
            
             return;
         }
@@ -75,17 +77,18 @@ class RacunController extends AutorizacijaController
             return;
         }
         
-        $this->detalji($this->entitet, $prodavaci, $kupci, $this->poruka);
+        $this->detalji($this->entitet, $prodavaci, $kupci, $bicikli, $this->poruka);
  
     }
 
-    private function detalji($e, $prodavaci, $kupci, $poruka)
+    private function detalji($e, $prodavaci, $kupci, $bicikli, $poruka)
     {
         $this->view->render($this->phtmlDir . 'detalji',[
             'e'=>$e,
             'prodavaci'=>$prodavaci,
             'kupci'=>$kupci,
             'poruka'=>$poruka,
+            'bicikli'=>$bicikli,
             'css'=>'<link rel="stylesheet" href="//code.jquery.com/ui/1.13.2/themes/base/jquery-ui.css">',
             'js'=>'<script src="https://code.jquery.com/ui/1.13.2/jquery-ui.js"></script>
             <script>
@@ -102,7 +105,8 @@ class RacunController extends AutorizacijaController
         $prodavaci = [];
         $p = new stdClass();
         $p->sifra=0;
-        $p->ime='Odaberi Prodavaca';
+        $p->ime='Odaberi ';
+        $p->prezime=' prodavača';
         $prodavaci[]=$p;
         foreach(Prodavac::read() as $prodavac){
             $prodavaci[]=$prodavac;
@@ -115,8 +119,8 @@ class RacunController extends AutorizacijaController
         $kupci = [];
         $k = new stdClass();
         $k->sifra=0;
-        $k->ime='Odaberi kupca';
-        $k->prezime='';
+        $k->ime='Odaberi ';
+        $k->prezime='kupca';
         $kupci[]=$k;
         foreach(Kupci::read() as $kupac){
             $kupci[]=$kupac;
@@ -126,7 +130,16 @@ class RacunController extends AutorizacijaController
 
     private function ucitajBicikle()
     {
-
+        $bicikli = [];
+        $b = new stdClass();
+        $b->sifra=0;
+        $b->proizvodac='Odaberi ';
+        $b->namjena='bicikl';
+        $bicikli[]=$b;
+        foreach(Bicikl::read() as $bicikl){
+            $bicikli[]=$bicikl;
+        }
+        return $bicikli;
     }
 
     public function dodajBicikl()
@@ -142,7 +155,7 @@ class RacunController extends AutorizacijaController
         if(!isset($_GET['racun']) || !isset($_GET['bicikl'])){
             return;
         }
-        Racun::obrisiBicikl($_GET['racun'],$_GET['bicikl']);
+        Racun::obrisiBicikl($_GET['racun'], $_GET['kolicina'], $_GET['bicikl']);
     }
 
     public function brisanje($sifra)

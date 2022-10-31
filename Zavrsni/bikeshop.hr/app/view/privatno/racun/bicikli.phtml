@@ -1,0 +1,30 @@
+<div class="callout" 
+ style="margin-top: 25px; height: 360px;">
+
+	<input id="uvjet" type="text" placeholder="Dio proizvođača bicikla">
+
+    
+    <div style="overflow: auto; max-height: 280px;">
+        <table>
+            <thead>
+                <tr>
+                    <th>Bicikl</th>
+                    <th>Akcija</th>
+                </tr>
+            </thead>
+            <tbody id="podaci">
+                <?php foreach($e->bicikl as $b): ?>
+                    <tr>
+                        <td><?=$b->proizvodac?> <?=$b->namjena?></td>
+                        <td>
+                            <a class="brisiBicikl" href="#" id="p_<?=$p->sifra?>">
+                                <i style="color: red;" 
+                                class="step fi-page-delete size-36"></i>
+                            </a>
+                        </td>
+                    </tr>
+                <?php endforeach;?>
+            </tbody>
+        </table>
+    </div>
+</div>

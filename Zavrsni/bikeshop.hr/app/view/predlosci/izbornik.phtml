@@ -18,7 +18,7 @@
             <li><a href="<?=App::config('url') ?>prodavac">Prodavači</a></li>
             <li><a href="<?=App::config('url') ?>kupac">Kupci</a></li>
             <!-- <li><a href="<?=App::config('url') ?>stavka">Košarica</a></li> -->
-            <li><a href="<?=App::config('url') ?>racun">Račun</a></li>
+            <li><a href="<?=App::config('url') ?>racun">Narudžbe</a></li>
           </ul>
         </li>  
       <?php endif; ?>
@@ -26,6 +26,7 @@
   </div>
   <div class="top-bar-right">
     <ul class="menu">
+    <li><a href="<?= App::config('url') ?>dijagram">ER dijagram</a></li>
       <?php if(!App::auth()): ?>
         <li><a href="<?=App::config('url') ?>login/prijava">Prijava</a></li>
       <?php else: ?>
