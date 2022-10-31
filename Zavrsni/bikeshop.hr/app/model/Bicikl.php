@@ -42,7 +42,7 @@ class Bicikl
             from bicikl a left join stavka b
             on a.sifra = b.bicikl
             group by a.sifra, a.proizvodac, a.namjena, a.elektricni, a.broj_brzina, a.velicina_cm, a.cijena_kn
-            order by 1,2;
+            order by 2,3,4;
         
         ');
         $izraz->execute(); // OVO MORA BITI OBAVEZNO
